@@ -6,6 +6,7 @@ export const NavContainer = styled.div`
 	/* background-color: white; */
 	background-color: var(--clr-accent);
 	margin-top: 20px;
+	padding-right: 10px;
 `;
 
 export const NavCenter = styled.ul`
@@ -20,7 +21,7 @@ export const NavCenter = styled.ul`
 		color: var(--clr-light);
 		padding: 9px 10px;
 		span {
-			margin-left: 10px;
+			margin-left: 8px;
 		}
 		:hover {
 			border-bottom: 2px solid black;
@@ -31,7 +32,7 @@ export const NavCenter = styled.ul`
 		li a {
 			padding: 9px 5px;
 			span {
-				margin-left: 8px;
+				margin-left: 3px;
 			}
 		}
 	}

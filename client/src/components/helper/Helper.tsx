@@ -4,14 +4,14 @@ import {
 	ListAlt,
 	Notes,
 	Settings,
-	// Bookmark,
-	// Chat,
-	// Group,
-	// HelpOutline,
-	// PlayCircleFilledOutlined,
-	// RssFeed,
-	// School,
-	// WorkOutline,
+	Bookmark,
+	Chat,
+	Group,
+	HelpOutline,
+	PlayCircleFilledOutlined,
+	RssFeed,
+	School,
+	WorkOutline,
 	// Delete,
 	// Edit,
 	// PrintDisabled,
@@ -57,3 +57,54 @@ export const navMenu: NavLists = {
     },
 	],
 };
+
+export const SideBarListItem = {
+	list: [
+		{
+			name: 'Feed',
+			icon: <RssFeed />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Chats',
+			icon: <Chat />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Videos',
+			icon: <PlayCircleFilledOutlined />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Group',
+			icon: <Group />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Bookmarks',
+			icon: <Bookmark />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Questions',
+			icon: <HelpOutline />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Jobs',
+			icon: <WorkOutline />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Events',
+			icon: <Event />,
+			url: '/users/notes',
+		},
+		{
+			name: 'Courses',
+			icon: <School />,
+			url: '/users/notes',
+		},
+	],
+};
+

@@ -6,14 +6,24 @@ export const MainHeaderContainer = styled.div`
 	position: sticky;
 	top: 0;
 	z-index: 999; */
+	position: fixed;
+	max-width: 1500px;
 	width: 100%;
+	margin: 0 auto;
 	background-color: var(--clr-lightBlue);
-  /* padding: 10px 0px; */
-	 padding-top: 10px;
-	 margin-bottom: 20px;
+	/* padding: 10px 0px; */
+	padding-top: 10px;
+	/* margin-bottom: 300px; */
+	/* top: 100px; */
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	/* padding-bottom: 50px; */
 `;
 
 export const HeaderContainer = styled.div`
+position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -21,6 +31,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderLeft = styled.div`
+position: relative;
 	flex: 2;
 	margin-right: 40px;
 	a h1 {
@@ -32,6 +43,7 @@ export const HeaderLeft = styled.div`
 `;
 
 export const HeaderLeftPrimary = styled.div`
+position: relative;
 	display: none;
 	a .MuiSvgIcon-root {
 		color: var(--clr-light);
@@ -78,6 +90,7 @@ export const HeaderCenter = styled.div`
 `;
 
 export const HeaderRight = styled.div`
+position: relative;
 	flex: 2;
 	display: flex;
 	color: var(--clr-light);
@@ -92,6 +105,7 @@ export const HeaderRight = styled.div`
 `;
 
 export const HeaderRightLink = styled.div`
+position: relative;
 	span {
 		margin-right: 10px;
 		font-size: 14px;
