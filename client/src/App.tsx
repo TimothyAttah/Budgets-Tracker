@@ -4,6 +4,8 @@ import { Header } from './components/header/Header';
 import history from './history';
 import { Home } from './pages/home/Home';
 import { Profile } from './pages/profile/Profile';
+import { Signin } from './pages/user/Signin';
+import { Signup } from './pages/user/Signup';
 
 export const App = () => {
 	return (
@@ -16,7 +18,13 @@ export const App = () => {
 					</Route>
 					<Route path='/users/profile/:username'>
 						<Profile />
-					</Route>
+          </Route>
+          <Route path='/users/signup'>
+            <Signup />
+          </Route>
+          <Route path='/users/signin'>
+            <Signin />
+          </Route>
 				</Switch>
 			</Router>
 		</div>

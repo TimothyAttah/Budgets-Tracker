@@ -18,7 +18,7 @@ export const MainHeaderContainer = styled.div`
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 100;
+	z-index: 9990;
 	/* padding-bottom: 50px; */
 `;
 

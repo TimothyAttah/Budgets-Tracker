@@ -3,7 +3,8 @@ import { MainHeader } from "./MainHeader";
 import { UserHeader } from "./UserHeader";
 
 export const Header = () => {
-  const [user] = useState<boolean>(true);
+  const [user] = useState<boolean>(false);
+  
   return (
     <div>
       {user ? <MainHeader/> : <UserHeader />}

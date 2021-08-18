@@ -5,11 +5,15 @@ import styled from 'styled-components';
 import { Book } from '@material-ui/icons';
 
 const Header = styled.header`
+	position: fixed;
+	max-width: 2000px;
 	width: 100%;
+	margin: 0 auto;
 	padding: 25px 20px;
-	position: sticky;
 	top: 0;
-	z-index: 990;
+	left: 0;
+	right: 0;
+	z-index: 9990;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -22,11 +26,11 @@ const Header = styled.header`
 		display: none;
 		color: var(--clr-light);
 	}
-  @media (max-width: 800px){
-    h1 a{
-      font-size: 2.5rem;
-    }
-  }
+	@media (max-width: 800px) {
+		h1 a {
+			font-size: 2.5rem;
+		}
+	}
 	@media (max-width: 500px) {
 		h1 {
 			display: none;
