@@ -13,6 +13,7 @@ import {
 	HeaderRight,
 	HeaderRightLink,
 } from './MainHeaderStyles';
+import { Nav } from '../nav/Nav';
 
 export const MainHeader: FC = () => {
 	return (
@@ -54,6 +55,7 @@ export const MainHeader: FC = () => {
 				</HeaderRight>
 				<ProfileModal />
 			</HeaderContainer>
+			<Nav />
 		</MainHeaderContainer>
 	);
 };

@@ -8,13 +8,16 @@ export const MainHeaderContainer = styled.div`
 	z-index: 999; */
 	width: 100%;
 	background-color: var(--clr-lightBlue);
-  padding: 10px 20px;
+  /* padding: 10px 0px; */
+	 padding-top: 10px;
+	 margin-bottom: 20px;
 `;
 
 export const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 0px 20px;
 `;
 
 export const HeaderLeft = styled.div`
