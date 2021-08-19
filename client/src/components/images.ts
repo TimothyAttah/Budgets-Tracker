@@ -7,7 +7,7 @@ export const images = {
 	Alex: `${PF}/photo-1599566150163-29194dcaad36.jpeg`,
 	JaneDoe: `${PF}/photo-1494790108377-be9c29b29330.jpeg`,
 	Mary: `${PF}/photo-1607746882042-944635dfe10e.jpeg`,
-	Soka: `${PF}/photo4.png`,
+	Soka: `${PF}/photo.jpeg`,
 	Naruto: `${PF}/images.jpeg`,
 	PostOne: `${PF}/pexels-photo-1126384.jpeg`,
 	PostTwo: `${PF}/pexels-photo-1363876.jpeg`,

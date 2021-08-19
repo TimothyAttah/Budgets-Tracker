@@ -2,6 +2,7 @@ import { v4 } from 'uuid';
 import { NotesTypes } from "../types";
 import { NotesActionsTypes } from "../actionsTypes/actionsTypes";
 import { Notes } from "../interface";
+import { images } from '../../components/images';
 
 const initialState: Notes = {
 	notes: [
@@ -11,6 +12,8 @@ const initialState: Notes = {
 			content: `components modal ProfileModal js
                Line 2317 setUser is assigned a value but never used  no-unused-vars`,
 			createdAt: new Date(),
+			name: 'Jane Jack',
+			profilePicture: images.PostThree,
 		},
 		{
 			_id: v4(),
@@ -18,6 +21,8 @@ const initialState: Notes = {
 			content: `components modal ProfileModal js
                Line 2317 setUser is assigned a value but never used  no-unused-vars`,
 			createdAt: new Date(),
+			name: 'JohnWalker MatthewStar',
+			profilePicture: '',
 		},
 		{
 			_id: v4(),
@@ -25,6 +30,8 @@ const initialState: Notes = {
 			content: `components modal ProfileModal js
                Line 2317 setUser is assigned a value but never used  no-unused-vars`,
 			createdAt: new Date(),
+			name: 'Willow Black',
+			profilePicture: images.Alex,
 		},
 		{
 			_id: v4(),
@@ -32,6 +39,8 @@ const initialState: Notes = {
 			content: `components modal ProfileModal js
                Line 2317 setUser is assigned a value but never used  no-unused-vars`,
 			createdAt: new Date(),
+			name: 'Austin Carter',
+			profilePicture: images.Soka,
 		},
 	],
 };
