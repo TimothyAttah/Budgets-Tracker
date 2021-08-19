@@ -24,7 +24,6 @@ export const NoteTop = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin-right: 20px;
-	border: 2px solid red;
 	a .MuiAvatar-colorDefault {
 		color: var(--clr-dark);
 	}
@@ -33,7 +32,6 @@ export const NoteTop = styled.div`
 		object-fit: cover;
 	}
 	h3 a {
-		/* width: 150px; */
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

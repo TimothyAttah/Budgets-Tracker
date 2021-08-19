@@ -30,8 +30,8 @@ export const NotesLists: FC = () => {
 		<>
 			{notes.length ? (
 				notes.map(note => (
-					<NoteContainer>
-						<NoteContainerPrimary key={note._id} className='notes__container'>
+					<NoteContainer key={note._id}>
+						<NoteContainerPrimary className='notes__container'>
 							<NoteTop className='notes__top'>
 								<Link to='/users/profile/username'>
 									{note.profilePicture ? (
@@ -51,7 +51,9 @@ export const NotesLists: FC = () => {
 							</NoteTop>
 							<NoteCenter className='note__center'>
 								<h2>{note.title}</h2>
-								<small className='top__date'>{format(note.createdAt as TDate)}</small>
+								<small className='top__date'>
+									{format(note.createdAt as TDate)}
+								</small>
 								<Divider />
 								<ReadMore>{note.content}</ReadMore>
 								<NoteCenterBottom className='note__center-button'>
