@@ -6,8 +6,7 @@ import { SideBar } from "../../components/sidebar/SideBar"
 const HomeContainer = styled.div`
   position: relative;
   width: 100%;
-  margin-top: 130px;
-  border: 2px dashed blue;
+  margin-top: 120px;
   display: flex;
 `;
 
