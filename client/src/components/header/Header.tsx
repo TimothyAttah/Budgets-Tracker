@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import { Button, ButtonGroup } from '@material-ui/core'
-import { Link } from 'react-router-dom'
-import { UserButton, UserButtons } from '../Button'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { UserButton, UserButtons } from '../Button';
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
 	display: flex;
@@ -40,10 +39,9 @@ export const HeaderLeft = styled.div`
 	@media (max-width: 320px) {
 		margin-top: -30px;
 		a {
-			font-size: .8rem;
+			font-size: 0.8rem;
 		}
 	}
-
 `;
 
 export const HeaderRight = styled.div`
@@ -69,14 +67,14 @@ export const HeaderRight = styled.div`
 	}
 	@media (max-width: 320px) {
 		h4 {
-			font-size: .8rem;
+			font-size: 0.8rem;
 		}
 	}
 `;
 
 export const Header = () => {
 	const [user] = useState(true);
-  return (
+	return (
 		<HeaderContainer>
 			<HeaderLeft>
 				<Link to='/'>Budgetary</Link>
@@ -108,4 +106,4 @@ export const Header = () => {
 			)}
 		</HeaderContainer>
 	);
-}
+};
