@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 	--fw-bold: 700;
 
 	--clr-light: #fff;
+	--bg-black: #000000;
 	--clr-dark: #303030;
 	--clr-lightBlue: #1877f2;
 	--clr-accent: #f8333c;
