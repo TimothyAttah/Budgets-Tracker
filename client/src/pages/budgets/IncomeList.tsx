@@ -16,55 +16,58 @@ export const Container = styled.div`
 
 export const IncomesListItem = styled.ul`
 	width: 100%;
-  margin-top: 20px;
+	margin-top: 20px;
 	li {
+		width: 100%;
+		height: 120px;
 		display: flex;
 		justify-content: space-between;
-		background-color: green;
-    color: var(--clr-light);
+		background-color: var(--clr-light);
+		border: 2px solid green;
+		color: var(--clr-dark);
 		text-transform: capitalize;
 		margin-bottom: 10px;
 		font-size: 1.2rem;
 		padding: 5px 10px;
-    border-radius: 5px;
-    :hover{
-      opacity: 0.8;
-    }
-    @media (max-width: 600px){
-      flex-direction: column;
-    }
-    @media (max-width: 340px){
-      font-size: .8rem;
-    }
-
+		border-radius: 5px;
+		:hover {
+			opacity: 0.8;
+		}
+		@media (max-width: 600px) {
+			flex-direction: column;
+		}
+		@media (max-width: 340px) {
+			font-size: 0.8rem;
+			font-weight: bolder;
+		}
 	}
 `;
 
 export const IncomeListItemLeft = styled.div`
 	width: 70%;
 	display: flex;
-	align-items: flex-end;
+
 	justify-content: space-between;
 	span {
 		font-style: italic;
 		font-weight: bolder;
 		padding: 0 5px;
-		border-left: 2px solid var(--clr-light);
-		border-right: 2px solid var(--clr-light);
+		border-left: 2px solid var(--clr-dark);
+		border-right: 2px solid var(--clr-dark);
 	}
 	@media (max-width: 600px) {
 		width: 100%;
+		align-items: flex-end;
 	}
 	span {
-    margin-left: 20px;
+		margin-left: 20px;
 	}
 `;
 export const IncomeListItemRight = styled.div`
-margin-top: 8px;
 	button {
 		margin: 0 5px;
-		background-color: green;
-		color: crimson;
+		background-color: var(--clr-light);
+		color: teal;
 		.MuiSvgIcon-root {
 			font-size: 15px;
 		}
@@ -73,9 +76,9 @@ margin-top: 8px;
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
-    justify-content: right;
-    border-top: 2px solid var(--clr-light);
-    padding-top: 20px;
+		justify-content: right;
+		border-top: 2px solid var(--clr-dark);
+		padding-top: 20px;
 	}
 `;
 

@@ -12,6 +12,7 @@ export const HeaderContainer = styled.div`
 	background: var(--clr-accent);
 	color: var(--clr-light);
 	padding: 20px;
+	z-index: 999;
 	a {
 		color: var(--clr-light);
 	}
