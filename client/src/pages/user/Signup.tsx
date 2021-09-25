@@ -10,8 +10,11 @@ export const Container = styled.div`
 	form {
 		max-width: 500px;
 		width: 100%;
+		margin: auto;
 		margin-top: 40px;
-		padding: 0 10px;
+		padding: 20px 20px;
+		border-radius: 5px;
+		border: 1px solid var(--cream);
 		label {
 			font-weight: var(--fw-bold);
 			display: inline-block;
@@ -39,10 +42,14 @@ export const Container = styled.div`
 		}
 		small {
 			text-transform: capitalize;
+			font-weight: var(--fw-bold);
 			a {
 				color: var(--clr-lightBlue);
-        font-style: italic;
+				font-style: italic;
 			}
+		}
+		@media (max-width: 320px) {
+			font-size: 0.9rem;
 		}
 	}
 `;
