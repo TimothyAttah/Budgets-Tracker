@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	color: var(--clr-light);
@@ -16,7 +17,7 @@ const Container = styled.div`
 	margin-top: -40%;
 
 	h2 {
-		width: 95%;
+		width: 80%;
 		margin-top: 10px;
 		margin-bottom: 40px;
 		display: flex;
@@ -33,7 +34,7 @@ const Container = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-    margin-bottom: 10px;
+		margin-bottom: 10px;
 	}
 	.expense {
 		background-color: red;
@@ -45,12 +46,27 @@ const Container = styled.div`
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-    margin-bottom: 15px;
+		margin-bottom: 15px;
+	}
+	@media (max-width: 1200px){
+		h2{
+			width: 50%;
+		}
+	}
+	@media (max-width: 768px){
+		h2{
+			width: 75%;
+		}
 	}
 	@media (max-width: 650px) {
 		.income,
 		.expense {
 			width: 70%;
+		}
+	}
+	@media (max-width: 550px){
+		h2{
+			width: 90%;
 		}
 	}
 	@media (max-width: 500px) {
@@ -59,10 +75,15 @@ const Container = styled.div`
 		.expense {
 			flex-direction: column;
 		}
-	}
-	@media (max-width: 320px) {
 		h2 {
-			font-size: 1.8rem;
+			span {
+				padding-top: 10px;
+			}
+		}
+	}
+	@media (max-width: 380px) {
+		h2 {
+			font-size: 1.9rem;
 			font-weight: bold;
 			span {
 				padding-top: 10px;
@@ -70,9 +91,18 @@ const Container = styled.div`
 		}
 		.income,
 		.expense {
-			font-size: 1.1rem;
+			font-size: 1.3rem;
 			font-weight: bold;
 			padding: 5px 20px;
+		}
+	}
+	@media (max-width: 290px) {
+		h2 {
+			font-size: 1.7rem;
+		}
+		.income,
+		.expense {
+			font-size: 1.1rem;
 		}
 	}
 `;
