@@ -37,7 +37,30 @@ export const HeaderLeft = styled.div`
 		}
 	}
 	@media (max-width: 320px) {
-		margin-top: -30px;
+		a {
+			font-size: 0.8rem;
+		}
+	}
+`;
+export const HeaderLeftPrimary = styled.div`
+	border-radius: 50%;
+	border: 2px solid var(--clr-light);
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	a {
+		font-size: 1.5rem;
+		font-weight: bold;
+		font-style: italic;
+	}
+	@media (max-width: 450px) {
+		a {
+			font-size: 1rem;
+		}
+	}
+	@media (max-width: 320px) {
 		a {
 			font-size: 0.8rem;
 		}
@@ -73,24 +96,29 @@ export const HeaderRight = styled.div`
 `;
 
 export const Header = () => {
-	const [user] = useState(true);
+	const [user] = useState(false);
 	return (
 		<HeaderContainer>
-			<HeaderLeft>
-				<Link to='/'>Budgetary</Link>
-			</HeaderLeft>
 			{user ? (
-				<HeaderRight>
-					<h4>Naomi Bartholomew</h4>
-					<button>Sign out</button>
-				</HeaderRight>
+				<>
+					<HeaderLeft>
+						<Link to='/'>Budgetary</Link>
+					</HeaderLeft>
+					<HeaderRight>
+						<h4>Naomi Bartholomew</h4>
+						<button>Sign out</button>
+					</HeaderRight>
+				</>
 			) : (
-				<div className='header-right'>
+				<>
+					<HeaderLeftPrimary>
+						<Link to='/'>Budgetary</Link>
+					</HeaderLeftPrimary>
 					<UserButtons>
 						<Link to='/users/signup'>
 							<UserButton>Sign Up</UserButton>
 						</Link>
-						<Link to='/users/signup'>
+						<Link to='/users/signin'>
 							<UserButton>Sign in</UserButton>
 						</Link>
 					</UserButtons>
@@ -102,7 +130,7 @@ export const Header = () => {
 						<Link to='/users/signin'>Sign In</Link>
 					</UserButton>
 				</ButtonGroup> */}
-				</div>
+				</>
 			)}
 		</HeaderContainer>
 	);
