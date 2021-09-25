@@ -24,7 +24,7 @@ const initialState: Incomes = {
     },
     {
       id: 1,
-      content: 'Cleaning Jobs',
+      content: 'Cleaning Jobs jbhhghhg fitdrtud',
       value: 7000,
       createdAt: '12th june 2021'
     },
