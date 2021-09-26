@@ -48,8 +48,6 @@ export const incomes = (state = initialState, action: IncomeActionTypes) => {
         incomes: state.incomes.map(income => income.id === action.payload.id ? action.payload : income)
       }
     case IncomeTypes.DELETE_INCOME:
-      console.log('delete income');
-      
       return {
         ...state,
         incomes: state.incomes.filter(income => income.id !== action.payload)

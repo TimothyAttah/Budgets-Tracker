@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { listExpenses } from '../../redux/actions/expenses';
+import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
 import { StoreState } from '../../redux/reducers';
 
 export const Container = styled.div`
@@ -87,7 +87,10 @@ export const ExpensesList = () => {
   const { expenses } = useSelector((state: StoreState) => state.expenses);
   useEffect(() => {
     dispatch(listExpenses())
-  }, [dispatch]);
+	}, [dispatch]);
+	const handleDelete = (id: number | string) => {
+		dispatch(deleteExpenses(id))
+	}
   return (
 		<Container>
 			<h2>Expenses</h2>
@@ -102,7 +105,7 @@ export const ExpensesList = () => {
 								<button>
 									<Edit />
 								</button>
-								<button>
+								<button onClick={()=> handleDelete(expense.id)}>
 									<Delete />
 								</button>
 							</ExpensesListItemRight>
