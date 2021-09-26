@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { listIncome } from '../../redux/actions/income';
+import { listIncome, deleteIncome } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
 
 export const Container = styled.div`
@@ -89,6 +89,10 @@ export const IncomeList = () => {
 		dispatch(listIncome());
 	}, [dispatch]);
 
+	const handleDelete = (id: number | string) => {
+		dispatch(deleteIncome(id));
+	}
+
 
 	return (
 		<Container>
@@ -104,7 +108,7 @@ export const IncomeList = () => {
 								<button>
 									<Edit />
 								</button>
-								<button>
+								<button onClick={()=> handleDelete(income.id)}>
 									<Delete />
 								</button>
 							</IncomeListItemRight>

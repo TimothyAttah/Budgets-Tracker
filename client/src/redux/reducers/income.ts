@@ -11,19 +11,19 @@ const initialState: Incomes = {
       createdAt: '12th june 2021'
     },
     {
-      id: 1,
+      id: 2,
       content: 'Projects',
       value: 5000,
       createdAt: '12th june 2021'
     },
     {
-      id: 1,
+      id: 3,
       content: 'Todos',
       value: 2000,
       createdAt: '12th june 2021'
     },
     {
-      id: 1,
+      id: 4,
       content: 'Cleaning Jobs jbhhghhg fitdrtud',
       value: 7000,
       createdAt: '12th june 2021'
@@ -48,6 +48,8 @@ export const incomes = (state = initialState, action: IncomeActionTypes) => {
         incomes: state.incomes.map(income => income.id === action.payload.id ? action.payload : income)
       }
     case IncomeTypes.DELETE_INCOME:
+      console.log('delete income');
+      
       return {
         ...state,
         incomes: state.incomes.filter(income => income.id !== action.payload)
