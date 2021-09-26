@@ -115,7 +115,7 @@ export const IncomeList = () => {
 						</li>
 					))
 				) : (
-					<h2>You have no income yet...</h2>
+					<h3>You have no income yet...</h3>
 				)}
 			</IncomesListItem>
 		</Container>

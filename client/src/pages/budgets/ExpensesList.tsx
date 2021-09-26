@@ -17,6 +17,7 @@ export const Container = styled.div`
 export const ExpensesListItem = styled.ul`
 	width: 100%;
 	margin-top: 20px;
+	
 	li {
 		width: 100%;
 		height: 120px;
@@ -112,7 +113,7 @@ export const ExpensesList = () => {
 						</li>
 					))
 				) : (
-					<h2>You have no expenses yet...</h2>
+					<h3>You have no expenses yet...</h3>
 				)}
 			</ExpensesListItem>
 		</Container>
