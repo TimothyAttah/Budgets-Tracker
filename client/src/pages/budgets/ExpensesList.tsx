@@ -105,7 +105,7 @@ export const ExpensesList = () => {
 									<Button>
 										<Edit />
 									</Button>
-									<Button>
+									<Button onClick={()=> handleDelete(expense.id)}>
 										<Delete />
 									</Button>
 								</ButtonGroup>

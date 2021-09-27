@@ -109,7 +109,7 @@ export const IncomeList = () => {
 									<Button>
 										<Edit />
 									</Button>
-									<Button>
+									<Button onClick={()=> handleDelete(income.id)}>
 										<Delete />
 									</Button>
 								</ButtonGroup>
