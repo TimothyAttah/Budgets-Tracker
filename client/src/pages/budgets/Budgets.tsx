@@ -4,6 +4,7 @@ import { ExpensesList } from './ExpensesList'
 import { IncomeList } from './IncomeList'
 import BackgroundImage from '../../images/bg.jpeg';
 import { BudgetsTransaction } from './BudgetsTransaction';
+import { CreateBudgets } from './CreateBudgets';
 
 const BudgetsContainer = styled.div`
 `;
@@ -28,6 +29,9 @@ export const Budgets = () => {
 			<BudgetsContainerTop>
 				<BudgetsTransaction />
 			</BudgetsContainerTop>
+			<div>
+				<CreateBudgets />
+			</div>
 			<Container>
 				<IncomeList />
 				<ExpensesList />
