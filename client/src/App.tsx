@@ -10,7 +10,7 @@ export const App = () => {
   return (
 		<Router history={history}>
 			<Header />
-			<div style={{ paddingTop: '150px' }}>
+			<div style={{ paddingTop: '100px' }}>
         <Switch>
           <Route path='/' exact component={Budgets} />
 					<Route path='/users/signup' component={Signup} />
