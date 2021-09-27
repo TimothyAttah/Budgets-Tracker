@@ -2,27 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-	width: 100%;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
 	color: var(--clr-light);
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	/* position: absolute;
-	top: 30px;
-	left: 40%;
-	transform: translateX(-50%); */
+	margin: auto;
 	text-align: center;
-	margin-top: -40%;
 
 	h2 {
-		width: 80%;
-		margin-top: 10px;
-		margin-bottom: 40px;
+		width: 50%;
+		margin-top: 50px;
+		margin-bottom: 80px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		flex-wrap: wrap;
+		text-align: center;
 	}
 
 	.income {
@@ -34,7 +32,7 @@ const Container = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 	}
 	.expense {
 		background-color: red;
@@ -48,28 +46,37 @@ const Container = styled.div`
 		flex-wrap: wrap;
 		margin-bottom: 15px;
 	}
-	@media (max-width: 1200px){
-		h2{
-			width: 50%;
+	@media (max-width: 1000px) {
+		h2 {
+			width: 60%;
 		}
 	}
-	@media (max-width: 768px){
-		h2{
-			width: 75%;
+	@media (max-width: 770px) {
+		h2 {
+			font-size: 2rem;
 		}
-	}
-	@media (max-width: 650px) {
+		h2,
 		.income,
 		.expense {
+			flex-direction: row;
 			width: 70%;
 		}
-	}
-	@media (max-width: 550px){
-		h2{
-			width: 90%;
+		h2 {
+			span {
+				padding-top: 0px;
+			}
 		}
 	}
-	@media (max-width: 500px) {
+	@media (max-width: 600px) {
+		h2 {
+			font-size: 1.5rem;
+		}
+		.income,
+		.expense {
+			font-size: 1.2rem;
+		}
+	}
+	@media (max-width: 420px) {
 		h2,
 		.income,
 		.expense {
@@ -77,32 +84,17 @@ const Container = styled.div`
 		}
 		h2 {
 			span {
-				padding-top: 10px;
+				padding-top: 15px;
 			}
 		}
 	}
-	@media (max-width: 380px) {
+	@media (max-width: 280px) {
 		h2 {
-			font-size: 1.9rem;
-			font-weight: bold;
-			span {
-				padding-top: 10px;
-			}
+			font-size: 1.2rem;
 		}
 		.income,
 		.expense {
-			font-size: 1.3rem;
-			font-weight: bold;
-			padding: 5px 20px;
-		}
-	}
-	@media (max-width: 290px) {
-		h2 {
-			font-size: 1.7rem;
-		}
-		.income,
-		.expense {
-			font-size: 1.1rem;
+			font-size: 1rem;
 		}
 	}
 `;

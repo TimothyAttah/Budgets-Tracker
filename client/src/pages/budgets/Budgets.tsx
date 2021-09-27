@@ -13,9 +13,9 @@ const Container = styled.div`
 `;
 
 const BudgetsContainerTop = styled.div`
-	border: 2px dashed green;
 	width: 100%;
-	padding-top: 42%;
+	height: 400px;
+	/* padding-top: 30%; */
 	background: url(${BackgroundImage}) no-repeat center;
 	background-size: cover;
 	position: relative;
