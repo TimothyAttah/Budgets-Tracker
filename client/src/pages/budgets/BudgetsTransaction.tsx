@@ -88,13 +88,22 @@ const Container = styled.div`
 			}
 		}
 	}
+	@media (max-width: 320px) {
+		h2 {
+			font-size: 1.4rem;
+		}
+		.income,
+		.expense {
+			font-size: 1rem;
+		}
+	}
 	@media (max-width: 280px) {
 		h2 {
 			font-size: 1.2rem;
 		}
 		.income,
 		.expense {
-			font-size: 1rem;
+			font-size: .9rem;
 		}
 	}
 `;

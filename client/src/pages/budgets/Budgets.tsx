@@ -10,6 +10,7 @@ const BudgetsContainer = styled.div`
 const Container = styled.div`
   display: flex;
 	justify-content: space-between;
+	/* margin: auto; */
 `;
 
 const BudgetsContainerTop = styled.div`

@@ -4,10 +4,13 @@ import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
 import { StoreState } from '../../redux/reducers';
+import { Button, ButtonGroup } from '@material-ui/core';
 
 export const Container = styled.div`
-	width: 50%;
+	width: 45%;
+	margin-top: 30px;
 	@media (max-width: 450px) {
+		width: 48%;
 		h2 {
 			font-size: 1.5rem;
 		}
@@ -15,72 +18,67 @@ export const Container = styled.div`
 `;
 
 export const ExpensesListItem = styled.ul`
-	width: 100%;
 	margin-top: 20px;
-	
+
 	li {
-		width: 100%;
-		height: 120px;
 		display: flex;
 		justify-content: space-between;
-		background-color: var(--clr-light);
-    border: 2px solid red;
+		background-color: var(--gray-4);
+		/* background: linear-gradient(to bottom, green, red); */
+		background: linear-gradient(to bottom, #b53f3f99, #2dc5114a);
 		color: var(--clr-dark);
 		text-transform: capitalize;
 		margin-bottom: 10px;
 		font-size: 1.2rem;
-		padding: 5px 10px;
+		padding: 15px 10px;
 		border-radius: 5px;
 		:hover {
 			opacity: 0.8;
 		}
-		@media (max-width: 600px) {
+		@media (max-width: 850px) {
 			flex-direction: column;
 		}
-		@media (max-width: 340px) {
-			font-size: 0.8rem;
-      font-weight: bolder;
+		@media (max-width: 360px) {
+			font-size: 0.9rem;
+			font-weight: bold;
 		}
 	}
 `;
 
 export const ExpensesListItemLeft = styled.div`
-	width: 70%;
+	width: 50%;
 	display: flex;
-
 	justify-content: space-between;
 	span {
 		font-style: italic;
 		font-weight: bolder;
+		display: flex;
 		padding: 0 5px;
-		border-left: 2px solid var(--clr-dark);
-		border-right: 2px solid var(--clr-dark);
+		align-items: flex-end;
 	}
-	@media (max-width: 600px) {
+	@media (max-width: 850px) {
 		width: 100%;
 		align-items: flex-end;
 	}
-	span {
-		margin-left: 20px;
-	}
 `;
 export const ExpensesListItemRight = styled.div`
-	/* margin-top: 8px; */
+	display: flex;
+	justify-content: right;
 	button {
-		margin: 0 5px;
-		background-color: var(--clr-light);
+		background: linear-gradient(to bottom, #b53f3f99, #2dc5114a);
 		color: teal;
 		.MuiSvgIcon-root {
-			font-size: 15px;
+			font-size: 25px;
 		}
 	}
-	@media (max-width: 600px) {
+	@media (max-width: 850px) {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: right;
 		border-top: 2px solid var(--clr-dark);
-		padding-top: 20px;
+		margin-top: 20px;
+		padding-top: 10px;
 	}
 `;
 export const ExpensesList = () => {
@@ -103,12 +101,14 @@ export const ExpensesList = () => {
 								{expense.content}: <span>{expense.value}</span>
 							</ExpensesListItemLeft>
 							<ExpensesListItemRight>
-								<button>
-									<Edit />
-								</button>
-								<button onClick={()=> handleDelete(expense.id)}>
-									<Delete />
-								</button>
+								<ButtonGroup variant='contained'>
+									<Button>
+										<Edit />
+									</Button>
+									<Button>
+										<Delete />
+									</Button>
+								</ButtonGroup>
 							</ExpensesListItemRight>
 						</li>
 					))
