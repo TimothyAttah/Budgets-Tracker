@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserButton, UserButtons } from '../Button';
 import styled from 'styled-components';
+import { user } from '../NameInitial';
 
 export const HeaderContainer = styled.div`
 	display: flex;
@@ -102,7 +103,7 @@ export const HeaderRight = styled.div`
 `;
 
 export const Header = () => {
-	const [user] = useState(false);
+	// const [user] = useState(false);
 	return (
 		<HeaderContainer>
 			{user ? (

@@ -8,12 +8,17 @@ import { Budgets } from './pages/budgets/Budgets';
 import { Signin } from './pages/user/Signin';
 import { Signup } from './pages/user/Signup';
 import { getUsers } from './redux/actions/auth';
+import { user } from './components/NameInitial';
 
 export const App = () => {
 	toast.configure();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getUsers());
+		if (user) {
+			dispatch(getUsers());
+		} else {
+			history.push('/users/signin');
+		}
 	}, [dispatch]);
   return (
 		<Router history={history}>
