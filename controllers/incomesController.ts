@@ -48,6 +48,27 @@ const incomeControllers = {
       console.log(err.message);
 			res.status(500).json({ error: err });
     }
+  },
+  deleteIncomes: async (req: any, res: any) => {
+    try {
+      	const { id } = req.params;
+				const deleteIncome = await Incomes.query(
+					'DELETE FROM incomes WHERE incomesId = $1 AND userId = $2 RETURNING *',
+					[id, req.user.id]
+        );
+      if (deleteIncome.rows.length === 0) {
+				return res
+					.status(403)
+					.json({ error: 'This Income is not yours. Authorization denied.' });
+			}
+			res.status(200).json({
+				message: 'Income deleted successfully',
+				results: deleteIncome.rows[0],
+			});
+    } catch (err) {
+      console.log(err.message);
+			res.status(500).json({ error: err });
+    }
   }
 }
 
