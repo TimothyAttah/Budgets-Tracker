@@ -13,7 +13,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE incomes(
-  incomesId SERIAL,
+  incomesId uuid DEFAULT uuid_generate_v4(),
   userId UUID,
   content VARCHAR(255) NOT NULL,
   value INTEGER NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE incomes(
 );
 
 CREATE TABLE expenses(
-  expensesId SERIAL,
+  expensesId uuid DEFAULT uuid_generate_v4(),
   userId UUID,
   content VARCHAR(255) NOT NULL,
   value INTEGER NOT NULL,

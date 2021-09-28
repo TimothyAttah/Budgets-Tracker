@@ -1,3 +1,21 @@
+export interface IUser {
+	id?: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+}
+
+export interface ISigninUser {
+	id?: string;
+	email: string;
+	password: string;
+}
+
+export type InitialUser = {
+	users: IUser[];
+};
+
 interface IncomeLists {
 	id: number | string;
 	content: string;
@@ -6,8 +24,8 @@ interface IncomeLists {
 }
 
 export type Incomes = {
-  incomes: IncomeLists[]
-}
+	incomes: IncomeLists[];
+};
 interface ExpensesLists {
 	id: number | string;
 	content: string;
@@ -16,5 +34,5 @@ interface ExpensesLists {
 }
 
 export type Expenses = {
-  expenses: ExpensesLists[]
-}
+	expenses: ExpensesLists[];
+};
