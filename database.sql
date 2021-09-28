@@ -1,12 +1,15 @@
 CREATE DATABASE budgetary;
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE users(
   userId uuid DEFAULT uuid_generate_v4(),
   firstName VARCHAR(255) NOT NULL,
   lastName VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  PRIMARY KEY(userId)
+  PRIMARY KEY(userId),
+  CreatedAt TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE incomes(
@@ -15,7 +18,8 @@ CREATE TABLE incomes(
   content VARCHAR(255) NOT NULL,
   value INTEGER NOT NULL,
   PRIMARY KEY(incomeId),
-  FOREIGN KEY (userId) REFERENCES users(userId)
+  FOREIGN KEY (userId) REFERENCES users(userId),
+  CreatedAt TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE expenses(
@@ -24,5 +28,9 @@ CREATE TABLE expenses(
   content VARCHAR(255) NOT NULL,
   value INTEGER NOT NULL,
   PRIMARY KEY(expensesId),
-  FOREIGN KEY (userId) REFERENCES users(userId)
+  FOREIGN KEY (userId) REFERENCES users(userId),
+  CreatedAt TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO users(firstName, lastName, email, password) 
+VALUES ('Jane', 'Doe', 'jane@gmail.com', '123456');
