@@ -27,6 +27,27 @@ const incomeControllers = {
       console.log(err.message);
 			res.status(500).json({ error: err });
     }
+  },
+  updateIncomes: async (req: any, res: any) => {
+    try {
+      const { content, value } = req.body;
+      const { id } = req.params;
+      const incomes = await Incomes.query(
+        'UPDATE incomes SET (content, value) = ($1,$2) WHERE incomesId = $3 AND userId = $4 RETURNING *',
+        [content, value, id, req.user.id]
+      );
+      if (incomes.rows.length === 0)
+        return res
+					.status(403)
+          .json({ error: 'This income is not yours. Authorization denied.' });
+      	res.status(200).json({
+					message: 'Income updated successfully',
+					results: incomes.rows[0],
+				});
+    } catch (err) {
+      console.log(err.message);
+			res.status(500).json({ error: err });
+    }
   }
 }
 
