@@ -29,7 +29,22 @@ const expensesControllers = {
 			console.log(err.message);
 			res.status(500).json({ error: err });
 		}
-	},
+  },
+  getMyExpenses: async (req: any, res: any) => {
+    try {
+      const expenses = await Expenses.query(
+        'SELECT * FROM expenses WHERE userId = $1',
+        [req.user.id]
+      )
+      	res.status(200).json({
+					total: expenses.rows.length,
+					expenses: expenses.rows,
+				});
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+			console.error(err);
+    }
+  },
 	updateExpenses: async (req: any, res: any) => {
 		try {
 			const { content, value } = req.body;

@@ -6,6 +6,8 @@ expensesRouter.post('/create', expensesAuth, expensesController.createExpenses);
 
 expensesRouter.get('/', expensesAuth, expensesController.getExpenses);
 
+expensesRouter.get('/:id', expensesAuth, expensesController.getExpenses);
+
 expensesRouter.put('/:id/update', expensesAuth, expensesController.updateExpenses);
 
 expensesRouter.delete(
