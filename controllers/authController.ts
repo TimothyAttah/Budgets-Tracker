@@ -9,7 +9,7 @@ const authControllers = {
       const { firstName, lastName, email, password } = userData;
       if (!firstName || !lastName || !email || !password)
         return res.status(422).json({ error: 'Please enter all fields.' });
-      const users = await User.query('SELECT * FROM users WHERE userId = $1', [email])
+      const users = await User.query('SELECT * FROM users WHERE email = $1', [email])
       if (users.rows.length !== 0)
         return res.status(422).json({ error: 'User with that email already exists' });
       
@@ -22,6 +22,27 @@ const authControllers = {
     } catch (err) {
       console.log(err.message);
       return res.status(500).json({error: err})
+    }
+  },
+  signIn: async (req: any, res: any) => {
+    try {
+      const userData = req.body;
+      const { email, password } = userData;
+      if (!email || !password)
+        return res.status(422).json({ error: 'Please enter all fields.' });
+      const users = await User.query('SELECT * FROM users WHERE email = $1', [email])
+      if (users.rows.length === 0)
+        return res.status(422).json({ error: 'Wrong email or password ' });
+      const comparePassword = await bcrypt.compare(password, users.rows[0].password)
+      if (!comparePassword) return res.status(400).json({ error: 'Wrong password or email' });
+      const payload = {
+        user: {id: users.rows[0].userId}
+      }
+      const token = await jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1day' });
+      res.status(201).json({ message: 'Signin successfully', token, results: users.rows[0] });
+    } catch (err) {
+      console.log(err.message);
+			return res.status(500).json({ error: err });
     }
   }
 }
