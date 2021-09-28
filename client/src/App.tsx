@@ -17,7 +17,7 @@ export const App = () => {
 		if (user) {
 			dispatch(getUsers());
 		} else {
-			history.push('/users/signin');
+			// history.push('/users/signin');
 		}
 	}, [dispatch]);
   return (

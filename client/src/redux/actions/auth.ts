@@ -13,7 +13,7 @@ export const signUpUser = (userData: IUser) => async (dispatch: Dispatch) => {
 			type: UsersTypes.SIGN_UP,
 			payload: data.users,
 		});
-		history.push('/auth/users/signin');
+		history.push('/users/signin');
 		toast.success(data.message);
 	} catch (err:any) {
 		if (err.response && err.response.data) {
@@ -32,8 +32,8 @@ export const signInUser =
 				payload: data.results,
 			});
 			localStorage.setItem('jwt', data.token);
-			localStorage.setItem('user', JSON.stringify(data));
-			history.push('/users/todos');
+			localStorage.setItem('user', JSON.stringify(data.results));
+			history.push('/');
 			window.location.reload()
 			toast.success(data.message);
 		} catch (err:any) {

@@ -14,6 +14,8 @@ export const Signup = () => {
 		password: '',
 	});
 
+	const [firstName, setFirstName] = useState('')
+
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setUserData({ ...userData, [e.target.name]: e.target.value });
 	};
@@ -30,6 +32,9 @@ export const Signup = () => {
 				<label htmlFor='firstName'>First Name:</label>
 				<input
 					type='text'
+					name='firstName'
+					// value={firstName}
+					// onChange={e => setFirstName(e.target.value)}
 					value={userData.firstName}
 					onChange={handleChange}
 					placeholder='Enter first name'
@@ -37,6 +42,7 @@ export const Signup = () => {
 				<label htmlFor='lastName'>Last Name:</label>
 				<input
 					type='text'
+					name='lastName'
 					placeholder='Enter last name'
 					value={userData.lastName}
 					onChange={handleChange}
@@ -44,6 +50,7 @@ export const Signup = () => {
 				<label htmlFor='email'>Email:</label>
 				<input
 					type='email'
+					name='email'
 					placeholder='Enter email'
 					value={userData.email}
 					onChange={handleChange}
@@ -51,13 +58,14 @@ export const Signup = () => {
 				<label htmlFor='password'>Password:</label>
 				<input
 					type='password'
+					name='password'
 					placeholder='Enter your password'
 					value={userData.password}
 					onChange={handleChange}
 				/>
 				<label htmlFor='password'>Repeat Password:</label>
 				<input type='password' placeholder='Repeat your password' />
-				<button>Sign up</button>
+				<button type='submit'>Sign up</button>
 				<small>
 					Already have an account? <Link to='/users/signin'>Sign in here</Link>
 				</small>

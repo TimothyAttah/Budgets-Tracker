@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserButton, UserButtons } from '../Button';
 import styled from 'styled-components';
-import { user } from '../NameInitial';
+import { user, fullName } from '../NameInitial';
 
 export const HeaderContainer = styled.div`
 	display: flex;
@@ -112,7 +112,7 @@ export const Header = () => {
 						<Link to='/'>Budgetary</Link>
 					</HeaderLeft>
 					<HeaderRight>
-						<h4>Naomi Bartholomew</h4>
+						<h4>{fullName}</h4>
 						<button>Sign out</button>
 					</HeaderRight>
 				</>

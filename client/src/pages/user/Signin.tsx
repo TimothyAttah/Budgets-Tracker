@@ -24,6 +24,7 @@ export const Signin = () => {
 				<label htmlFor='email'>Email:</label>
 				<input
 					type='email'
+					name='email'
 					placeholder='Enter email'
 					value={userData.email}
 					onChange={handleChange}
@@ -31,6 +32,7 @@ export const Signin = () => {
 				<label htmlFor='password'>Password:</label>
 				<input
 					type='password'
+					name='password'
 					placeholder='Enter your password'
 					value={userData.password}
 					onChange={handleChange}
