@@ -20,35 +20,31 @@ export const signInUser = (userData: ISigninUser) =>
 
 export const getUsers = () => API.get('/auth');
 
-export const createTodos = (todos: object) => API.post('/todos/create', todos);
-
-export const listsTodos = () => API.get('/todos/auth');
-
-export const listsTodo = (id: object) => API.get(`/todos/auth/${id}`);
-
-export const deleteTodos = (id: number) => API.delete(`/todos/delete/${id}`);
-
-export const editTodos = (id: number, task: string) =>
-	API.put(`/todos/update/${id}`, task);
-
+// Incomes
 export const listsIncomes = () => API.get('/incomes');
+
+export const listsIncome = (id: object) => API.get(`/incomes/${id}`);
 
 export const createIncomes = (incomes: object) =>
 	API.post('/incomes/create', incomes);
 
 export const editIncomes = (id: string, incomes: object) =>
-	API.put(`/incomes/edit/${id}`, incomes);
+	API.put(`/incomes/${id}/update`, incomes);
 
-export const deleteIncomes = (id: string) =>
-	API.delete(`/incomes/delete/${id}`);
+export const deleteIncomes = (id: string | number) =>
+	API.delete(`/incomes/${id}/delete`);
 
+	
+// Expenses
 export const listsExpenses = () => API.get('/expenses');
+
+export const listsExpense = (id: object) => API.get(`/expenses/${id}`);
 
 export const createExpenses = (expenses: object) =>
 	API.post('/expenses/create', expenses);
 
 export const editExpenses = (id: string, expenses: object) =>
-	API.put(`/expenses/edit/${id}`, expenses);
+	API.put(`/expenses/${id}/update`, expenses);
 
-export const deleteExpenses = (id: string) =>
-	API.delete(`/expenses/delete/${id}`);
+export const deleteExpenses = (id: string | number) =>
+	API.delete(`/expenses/${id}/delete`);

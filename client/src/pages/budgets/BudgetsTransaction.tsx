@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listExpenses } from '../../redux/actions/expenses';
-import { listIncome } from '../../redux/actions/income';
+import {  listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
 
 import { Container } from './BudgetTransactionStyles';
@@ -10,7 +10,7 @@ export const BudgetsTransaction = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(listExpenses());
-		dispatch(listIncome());
+		dispatch(listIncomes());
 	},[dispatch])
 	const { expenses } = useSelector((state: StoreState) => state.expenses);
 	const { incomes } = useSelector((state: StoreState) => state.incomes);

@@ -1,13 +1,13 @@
 export interface IUser {
-	id?: string;
-	firstName: string;
-	lastName: string;
+	user_id?: string;
+	first_name: string;
+	last_name: string;
 	email: string;
 	password: string;
 }
 
 export interface ISigninUser {
-	id?: string;
+	user_id?: string;
 	email: string;
 	password: string;
 }
@@ -17,20 +17,22 @@ export type InitialUser = {
 };
 
 interface IncomeLists {
-	id: number | string;
+	incomes_id: number | string;
+	user_id: string;
 	content: string;
 	value: number;
-	createdAt?: Date | string;
+	created_At?: Date | string;
 }
 
 export type Incomes = {
 	incomes: IncomeLists[];
 };
 interface ExpensesLists {
-	id: number | string;
+	expenses_id: number | string;
+	user_id: string;
 	content: string;
 	value: number;
-	createdAt?: Date | string;
+	created_At?: Date | string;
 }
 
 export type Expenses = {

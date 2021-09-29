@@ -8,7 +8,7 @@ console.log('user', user);
 // 	user && user.results && user.results.lastName
 // 	}`;
 
-export const fullName = `${user?.firstname} ${user?.lastname}`; 
+export const fullName = `${user?.first_name} ${user?.last_name}`; 
 
 export const nameToInitials = (name: any) => {
 	const namesArray = fullName.trim().split(' ');

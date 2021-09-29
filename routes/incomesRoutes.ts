@@ -6,6 +6,8 @@ incomesRouter.post('/create', incomesAuth, incomeController.createIncomes);
 
 incomesRouter.get('/', incomesAuth, incomeController.getIncomes);
 
+incomesRouter.get('/:id', incomesAuth, incomeController.getMyIncomes);
+
 incomesRouter.put('/:id/update', incomesAuth, incomeController.updateIncomes);
 
 incomesRouter.delete('/:id/delete', incomesAuth, incomeController.deleteIncomes);

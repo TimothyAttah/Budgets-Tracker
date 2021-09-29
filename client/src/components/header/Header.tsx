@@ -103,7 +103,6 @@ export const HeaderRight = styled.div`
 `;
 
 export const Header = () => {
-	// const [user] = useState(false);
 	return (
 		<HeaderContainer>
 			{user ? (

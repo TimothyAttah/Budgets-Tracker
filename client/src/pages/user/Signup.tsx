@@ -8,13 +8,11 @@ import { Container } from './styles';
 export const Signup = () => {
 	const dispatch = useDispatch();
 	const [userData, setUserData] = useState({
-		firstName: '',
-		lastName: '',
+		first_name: '',
+		last_name: '',
 		email: '',
 		password: '',
 	});
-
-	const [firstName, setFirstName] = useState('')
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -29,22 +27,22 @@ export const Signup = () => {
 		<Container>
 			<h2>Budgetary</h2>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor='firstName'>First Name:</label>
+				<label htmlFor='first_name'>First Name:</label>
 				<input
 					type='text'
-					name='firstName'
-					// value={firstName}
-					// onChange={e => setFirstName(e.target.value)}
-					value={userData.firstName}
+					name='first_name'
+					// value={first_name}
+					// onChange={e => setfirst_name(e.target.value)}
+					value={userData.first_name}
 					onChange={handleChange}
 					placeholder='Enter first name'
 				/>
-				<label htmlFor='lastName'>Last Name:</label>
+				<label htmlFor='last_name'>Last Name:</label>
 				<input
 					type='text'
-					name='lastName'
+					name='last_name'
 					placeholder='Enter last name'
-					value={userData.lastName}
+					value={userData.last_name}
 					onChange={handleChange}
 				/>
 				<label htmlFor='email'>Email:</label>

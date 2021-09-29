@@ -1,8 +1,9 @@
+/* eslint-disable no-lone-blocks */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { listIncome, deleteIncome } from '../../redux/actions/income';
+import { listIncome, deleteIncome, listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
 import { Button, ButtonGroup } from '@material-ui/core';
 
@@ -86,39 +87,41 @@ export const IncomeList = () => {
 	const dispatch = useDispatch();
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
 	useEffect(() => {
-		dispatch(listIncome());
+		dispatch(listIncomes());
 	}, [dispatch]);
 
 	const handleDelete = (id: number | string) => {
 		dispatch(deleteIncome(id));
 	}
 
-
 	return (
 		<Container>
 			<h2>Incomes</h2>
 			<IncomesListItem>
-				{incomes.length ? (
-					incomes.map(income => (
-						<li key={income.id}>
-							<IncomeListItemLeft>
-								{income.content}: <span>{income.value}</span>
-							</IncomeListItemLeft>
-							<IncomeListItemRight>
-								<ButtonGroup variant='contained'>
-									<Button>
-										<Edit />
-									</Button>
-									<Button onClick={()=> handleDelete(income.id)}>
-										<Delete />
-									</Button>
-								</ButtonGroup>
-							</IncomeListItemRight>
-						</li>
-					))
+				{incomes.length  ? (
+					incomes.map(income => {
+						return (
+								<li key={income.incomes_id}>
+									<IncomeListItemLeft>
+										{income.content}: <span>{income.value}</span>
+									</IncomeListItemLeft>
+									<IncomeListItemRight>
+										<ButtonGroup variant='contained'>
+											<Button>
+												<Edit />
+											</Button>
+											<Button onClick={() => handleDelete(income.incomes_id)}>
+												<Delete />
+											</Button>
+										</ButtonGroup>
+									</IncomeListItemRight>
+								</li>
+						)
+					})
 				) : (
 					<h3>You have no income yet...</h3>
 				)}
+
 			</IncomesListItem>
 		</Container>
 	);

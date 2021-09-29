@@ -96,7 +96,7 @@ export const ExpensesList = () => {
 			<ExpensesListItem>
 				{expenses.length ? (
 					expenses.map(expense => (
-						<li key={expense.id}>
+						<li key={expense.expenses_id}>
 							<ExpensesListItemLeft>
 								{expense.content}: <span>{expense.value}</span>
 							</ExpensesListItemLeft>
@@ -105,7 +105,7 @@ export const ExpensesList = () => {
 									<Button>
 										<Edit />
 									</Button>
-									<Button onClick={()=> handleDelete(expense.id)}>
+									<Button onClick={() => handleDelete(expense.expenses_id)}>
 										<Delete />
 									</Button>
 								</ButtonGroup>
