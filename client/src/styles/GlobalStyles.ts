@@ -45,18 +45,33 @@ export const GlobalStyle = createGlobalStyle`
 	--fs-body: 1rem;
 }
 
-@media (min-width: 800px) {
+html{
+	font-size: 16px;
+}
+
+@media (max-width: 420px){
+		html{
+			font-size: 14px;
+		}
+	}
+@media (max-width: 280px){
+		html{
+			font-size: 10px;
+		}
+	}
+
+/* @media (min-width: 800px) {
 	:root {
 		--fs-h1: 2.5rem;
 		--fs-h2: 2rem;
 		--fs-h3: 1.5rem;
 		--fs-body: 1.125rem;
 	}
-}
+} */
 
 @media (max-width: 500px) {
 	:root {
-		--fs-h1: 1.5rem;
+		/* --fs-h1: 1.5rem; */
 		/* --fs-h2: 2rem;
 		--fs-h3: 1.5rem;
 		--fs-body: 1.125rem; */
@@ -69,13 +84,9 @@ body {
 	background-color: var(--clr-light);
 	color: var(--clr-dark);
 	font-family: var(--ff-third);
-	font-size: var(--fs-body);
-	line-height: 1.6;
-  /* border: 2px solid var(--clr-accent); */
   max-width: 2000px;
   width: 100%;
   margin: 0 auto;
-	/* overflow-x: none; */
 }
 
 ul,
@@ -102,7 +113,7 @@ input {
 
 /* Typography */
 
-h1,
+/* h1,
 h2,
 h3 {
 	line-height: 1;
@@ -117,6 +128,6 @@ h2 {
 }
 h3 {
 	font-size: var(--fs-h3);
-}
+} */
 
 `;

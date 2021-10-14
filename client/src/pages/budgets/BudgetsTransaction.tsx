@@ -41,8 +41,33 @@ export const BudgetsTransaction = () => {
 	
 	console.log(totalPercentage)
 
+	let now = new Date();
+	let months = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+
+	let month = now.getMonth();
+
+	let year = now.getFullYear();
+
+
   return (
 		<Container>
+			<p>
+				Available budget in {months[month]} {year}:{' '}
+			</p>
+
 			<h2>
 				<span>
 					{totalBalance > 1
@@ -80,7 +105,7 @@ export const BudgetsTransaction = () => {
 								.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
 					.00
 				</span>
-				<span>{totalPercentage}%</span>
+				<span className="percentage">{totalPercentage}%</span>
 			</h4>
 		</Container>
 	);
