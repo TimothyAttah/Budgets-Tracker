@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteIncome, listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
 import { Button, ButtonGroup } from '@material-ui/core';
-import { EditBudget } from './EditBudget';
+import history from '../../history';
 
 export const Container = styled.div`
 	width: 45%;
@@ -111,10 +112,15 @@ export const IncomeList = () => {
 								</IncomeListItemLeft>
 								<IncomeListItemRight>
 									<ButtonGroup variant='contained'>
-										<EditBudget />
-										{/* <Button>
-											<Edit />
-										</Button> */}
+										<Link to={`/edit/${income.incomes_id}`}>
+											<Button
+												onClick={() =>
+													history.push(`/edit/${income.incomes_id}`)
+												}
+											>
+												<Edit />
+											</Button>
+										</Link>
 										<Button onClick={() => handleDelete(income.incomes_id)}>
 											<Delete />
 										</Button>

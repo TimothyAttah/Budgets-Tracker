@@ -13,18 +13,22 @@ const ModalContainer = styled.div`
 	margin: 0 auto;
 	border-radius: 10px;
 	position: absolute;
-	top: 100px;
+	top: 300px;
 	left: 50%;
 	transform: translateX(-50%);
-	max-width: 600px;
+	/* max-width: 600px; */
 	width: 100%;
 	box-sizing: border-box;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+	-webkit-tap-highlight-color: transparent;
 	padding: 10px 30px;
 	@media (min-width: 700px) {
-		top: 130px;
+		top: 150px;
+		max-width: none;
 	}
 	@media (max-width: 700px) {
-		top: 150px;
+		top: 210px;
+		max-width: none;
 	}
 `;
 

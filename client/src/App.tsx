@@ -9,6 +9,7 @@ import { Signin } from './pages/user/Signin';
 import { Signup } from './pages/user/Signup';
 import { getUsers } from './redux/actions/auth';
 import { user } from './components/NameInitial';
+import { EditBudget } from './pages/budgets/EditBudget';
 
 export const App = () => {
 	toast.configure();
@@ -27,6 +28,7 @@ export const App = () => {
 			<div style={{ paddingTop: '100px' }}>
         <Switch>
           <Route path='/' exact component={Budgets} />
+          <Route path='/edit/:id' exact component={EditBudget} />
 					<Route path='/users/signup' component={Signup} />
 					<Route path='/users/signin' component={Signin} />
 				</Switch>
