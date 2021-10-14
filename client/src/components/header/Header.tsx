@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { UserButton, UserButtons } from '../Button';
 import styled from 'styled-components';
 import { user, fullName } from '../NameInitial';
+import history from '../../history';
 
 export const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	position: fixed;
-	max-width: 1500px;
+	max-width: 2000px;
 	width: 100%;
 	margin: auto;
 	top: 0;
@@ -103,6 +104,11 @@ export const HeaderRight = styled.div`
 `;
 
 export const Header = () => {
+	const handleLogout = () => {
+		localStorage.clear();
+		history.push('/users/signin');
+		window.location.reload();
+	}
 	return (
 		<HeaderContainer>
 			{user ? (
@@ -112,7 +118,7 @@ export const Header = () => {
 					</HeaderLeft>
 					<HeaderRight>
 						<h4>{fullName}</h4>
-						<button>Sign out</button>
+						<button onClick={handleLogout}>Sign out</button>
 					</HeaderRight>
 				</>
 			) : (

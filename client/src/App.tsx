@@ -14,11 +14,12 @@ export const App = () => {
 	toast.configure();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (user) {
-			dispatch(getUsers());
-		} else {
-			// history.push('/users/signin');
-		}
+		// if (user) {
+		// 	dispatch(getUsers());
+		// } else {
+		// 	history.push('/users/signin');
+		// }
+		dispatch(getUsers());
 	}, [dispatch]);
   return (
 		<Router history={history}>

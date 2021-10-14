@@ -50,7 +50,7 @@ const expensesControllers = {
 			const { content, value } = req.body;
 			const { id } = req.params;
 			const expenses = await Expenses.query(
-				'UPDATE expenses SET (content, value) = ($1,$2) WHERE expensesId = $3 AND user_id = $4 RETURNING *',
+				'UPDATE expenses SET (content, value) = ($1,$2) WHERE expenses_id = $3 AND user_id = $4 RETURNING *',
 				[content, value, id, req.user.id]
 			);
 			if (expenses.rows.length === 0)
@@ -70,7 +70,7 @@ const expensesControllers = {
 		try {
 			const { id } = req.params;
 			const deleteExpenses = await Expenses.query(
-				'DELETE FROM expenses WHERE expensesId = $1 AND user_id = $2 RETURNING *',
+				'DELETE FROM expenses WHERE expenses_id = $1 AND user_id = $2 RETURNING *',
 				[id, req.user.id]
 			);
 			if (deleteExpenses.rows.length === 0) {
@@ -81,7 +81,7 @@ const expensesControllers = {
 					});
 			}
 			res.status(200).json({
-				message: 'Income deleted successfully',
+				message: 'Expenses deleted successfully',
 				results: deleteExpenses.rows[0],
 			});
 		} catch (err) {

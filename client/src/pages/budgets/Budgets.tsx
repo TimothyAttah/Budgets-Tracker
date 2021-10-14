@@ -15,8 +15,9 @@ const Container = styled.div`
 `;
 
 const BudgetsContainerTop = styled.div`
-	width: 100%;
-	height: 400px;
+	/* width: 100%;
+	height: 400px; */
+	min-width: 20vw;
 	/* padding-top: 30%; */
 	background: url(${BackgroundImage}) no-repeat center;
 	background-size: cover;
