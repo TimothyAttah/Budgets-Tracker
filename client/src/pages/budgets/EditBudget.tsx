@@ -7,7 +7,6 @@ import { green } from '@material-ui/core/colors';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Modal } from '../../components/modal/Modal';
-import { Backdrop } from '../../components/Backdrop';
 import history from '../../history';
 import { Budgets } from './Budgets';
 import { StoreState } from '../../redux/reducers';
