@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteIncome, listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
 import { Button, ButtonGroup } from '@material-ui/core';
+import { EditBudget } from './EditBudget';
 
 export const Container = styled.div`
 	width: 45%;
@@ -110,9 +111,10 @@ export const IncomeList = () => {
 								</IncomeListItemLeft>
 								<IncomeListItemRight>
 									<ButtonGroup variant='contained'>
-										<Button>
+										<EditBudget />
+										{/* <Button>
 											<Edit />
-										</Button>
+										</Button> */}
 										<Button onClick={() => handleDelete(income.incomes_id)}>
 											<Delete />
 										</Button>
