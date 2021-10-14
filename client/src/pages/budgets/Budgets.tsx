@@ -25,8 +25,20 @@ const BudgetsContainerTop = styled.div`
 `;
 
 export const Budgets = () => {
+	let now = new Date()
+	let months = [
+		'January', 'February', 'March', 'April', 'May', 'June',
+		'July', 'August', 'September', 'October', 'November', 'December'
+	]
+
+	let month = now.getMonth();		
+		
+	let year = now.getFullYear();
+
+	console.log('this year.....', year);
   return (
 		<BudgetsContainer>
+			<h2>Available budget in {months[month]} {year}: </h2>
 			<BudgetsContainerTop>
 				<BudgetsTransaction />
 			</BudgetsContainerTop>

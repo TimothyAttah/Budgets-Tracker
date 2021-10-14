@@ -108,7 +108,15 @@ export const IncomeList = () => {
 						return (
 							<li key={income.incomes_id}>
 								<IncomeListItemLeft>
-									{income.content}: <span>{income.value}</span>
+									{income.content}:{' '}
+									<span>
+										{' '}
+										+{' '}
+										{income.value
+											.toFixed(2)
+											.toString()
+											.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+									</span>
 								</IncomeListItemLeft>
 								<IncomeListItemRight>
 									<ButtonGroup variant='contained'>

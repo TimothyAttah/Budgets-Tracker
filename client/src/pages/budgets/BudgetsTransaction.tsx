@@ -22,12 +22,28 @@ export const BudgetsTransaction = () => {
 	const totalIncomes = parseInt(totalIncomesValues);
 	const totalExpenses = parseInt(totalExpensesValues);
 	const totalBalance = totalIncomes - totalExpenses;
+	const totalPercentage = Math.round((totalExpenses / totalIncomes) * 100)
+	
+	console.log('incomes<<<<<', incomeTransactions);
+	console.log('expenses<<<<<', expensesTransactions)
 
+	if (totalIncomes > 0) {
+		// calculate the percent
+	} else {
+		// data.percentage = -1
+	}
+	const toExpensesTransactions  = expensesTransactions.map(exp => Math.round((exp / totalIncomes) * 100)
+	)
+	console.log(
+		'total expenses<<<<<>>>>>>>>>', toExpensesTransactions
+	);
+	
+	
+	console.log(totalPercentage)
 
   return (
 		<Container>
 			<h2>
-				Balance:
 				<span>
 					{totalBalance > 1
 						? `+ ${totalBalance
@@ -64,6 +80,7 @@ export const BudgetsTransaction = () => {
 								.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
 					.00
 				</span>
+				<span>{totalPercentage}%</span>
 			</h4>
 		</Container>
 	);

@@ -34,7 +34,7 @@ export const Container = styled.div`
 		margin-bottom: 20px;
 	}
 	.expense {
-		background-color: red;
+		background-color: #ff5049;
 		color: var(--clr-light);
 		padding: 10px 20px;
 		width: 50%;
@@ -44,6 +44,22 @@ export const Container = styled.div`
 		align-items: center;
 		flex-wrap: wrap;
 		margin-bottom: 15px;
+	}
+
+	.body__container{
+		color: #555;
+		font-family: Open Sans;
+		font-size: 16px;
+		height: 100vh;
+		font-weight: 4;
+		position: relative;
+	}
+	.top__containers{
+		height: 40vh;
+		background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(back.png);
+		background-size: cover;
+		background-position: center;
+		position: relative;
 	}
 	@media (max-width: 1000px) {
 		h2 {

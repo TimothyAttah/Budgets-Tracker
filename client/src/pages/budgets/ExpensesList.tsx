@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
 import { StoreState } from '../../redux/reducers';
 import { Button, ButtonGroup } from '@material-ui/core';
+import { listIncomes } from '../../redux/actions/income';
 
 export const Container = styled.div`
 	width: 45%;
@@ -84,11 +85,35 @@ export const ExpensesListItemRight = styled.div`
 	}
 `;
 export const ExpensesList = () => {
-  const dispatch = useDispatch();
-  const { expenses } = useSelector((state: StoreState) => state.expenses);
-  useEffect(() => {
-    dispatch(listExpenses())
-	}, [dispatch]);
+	const dispatch = useDispatch();
+	 useEffect(() => {
+		 dispatch(listExpenses());
+		 dispatch(listIncomes());
+	 }, [dispatch]);
+	
+	const { expenses } = useSelector((state: StoreState) => state.expenses);
+	const { incomes } = useSelector((state: StoreState) => state.incomes);
+
+	const incomeTransactions = incomes.map(income => income.value);
+	const totalIncomesValues = incomeTransactions
+		.reduce((val, results) => (val += results), 0)
+		.toFixed(2);
+	
+	const totalIncomes = parseInt(totalIncomesValues);
+//  const toExpensesTransactions = expensesTransactions.map(exp =>
+// 		Math.round((exp / totalIncomes) * 100)
+//  );
+//  console.log('total expenses<<<<<>>>>>>>>>', toExpensesTransactions);
+	
+	
+	// if (expenses > 0) {
+	// 	percentage + '%'
+	// } else {
+	// 	'---'
+	// }
+
+
+
 	const handleDelete = (id: number | string) => {
 		dispatch(deleteExpenses(id))
 	}
@@ -100,8 +125,17 @@ export const ExpensesList = () => {
 					expenses.map(expense => (
 						<li key={expense.expenses_id}>
 							<ExpensesListItemLeft>
-								{expense.content}: <span>{expense.value}</span>
+								{expense.content}:
+								<span>
+									-{' '}
+									{expense.value
+										.toFixed(2)
+										.toString()
+										.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+								</span>
+								<span>{Math.round((expense.value / totalIncomes) * 100)}%</span>
 							</ExpensesListItemLeft>
+
 							<ExpensesListItemRight>
 								<ButtonGroup variant='contained'>
 									<Link to={`/edit/${expense.expenses_id}`}>
