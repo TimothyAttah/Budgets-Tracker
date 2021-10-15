@@ -25,8 +25,17 @@ const BudgetsContainerTop = styled.div`
 	@media (max-width: 1280px) {
 		height: 40vh;
 	}
-	@media (max-width: 1024px) {
+	/* @media (max-width: 1024px) {
 		height: 30vh;
+	}
+	@media screen and (max-width: 1024px) {
+		height:50vh;
+	} */
+	@media (max-width: 540px) {
+		height: 40vh;
+	}
+	@media (max-width: 420px) {
+		height: 35vh;
 	}
 `;
 

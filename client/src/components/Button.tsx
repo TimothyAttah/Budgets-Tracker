@@ -16,12 +16,19 @@ export const ButtonContainers = styled(ButtonGroup)`
 	/* background-color: var(--clr-lightBlue); */
 	button {
 		color: var(--clr-light);
-
+    font-size: 1.5rem;
 	}
+  @media (max-width: 500px){
+    button{
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
   @media (max-width: 350px){
     button{
-      font-size: 10px;
+      font-size: 1rem;
       font-weight: bold;
+      padding:5px 10px;
     }
   }
 `;

@@ -11,13 +11,12 @@ import {
 	FormContainerPrimary
 } from './CreateBudgetStyle';
 import { v4 } from 'uuid';
-import { Add, AddCircle, ArrowDropDown, Check, Remove, RemoveCircle } from '@material-ui/icons';
+import {  AddCircle, ArrowDropDown, Check,  RemoveCircle } from '@material-ui/icons';
 
 export const CreateBudgets = () => {
 	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
 	const [close, setClose] = useState(false);
-	const [options, setOptions] = useState();
 
 	const [content, setContent] = useState('');
 	const [value, setValue] = useState('');

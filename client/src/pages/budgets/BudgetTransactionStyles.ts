@@ -60,43 +60,58 @@ export const Container = styled.div`
 	.expense {
 		background-color: #ff5049;
 	}
-
-	@media (min-width: 1024px) {
-		/* p{
-			font-size: 1.3rem;
-		}
-		h2{
-			font-size: 2.5rem;
-			margin: 15px 0;
+	@media (max-width: 1210px) {
+		h2 {
+			font-size: 2.8rem;
+			margin: 20px 0;
 			letter-spacing: 2px;
-		} */
-		/* h4{
-			margin-bottom: 10px;
-			span{
-				right: 50px;
-			}
-				.percentage{
-					right: 5px;
-				}
-		} */
+		}
 	}
-	@media (max-width: 360px) {
-		p{
+	@media (max-width: 540px) {
+		h2 {
+			font-size: 2.5rem;
+			margin: 20px 0;
+			letter-spacing: 2px;
+		}
+	}
+	@media (max-width: 420px) {
+		p {
 			font-size: 1.2rem;
 		}
-		h2{
+		h2 {
 			font-size: 2.3rem;
-			/* margin: 15px 0; */
+			margin: 20px 0;
 			letter-spacing: 2px;
 		}
-		h4{
-			/* margin-bottom: 10px; */
-			span{
+		h4 {
+			margin-bottom: 10px;
+			padding: 10px 20px;
+			span {
 				right: 50px;
 			}
-				.percentage{
-					right: 5px;
-				}
+			.percentage {
+				right: 5px;
+			}
+		}
+	}
+	@media (max-width: 320px) {
+		p {
+			font-size: 1.2rem;
+			margin-top: 15px;
+		}
+		h2 {
+			font-size: 2rem;
+			margin: 15px 0;
+			letter-spacing: 2px;
+		}
+		h4 {
+			margin-bottom: 10px;
+			span {
+				right: 50px;
+			}
+			.percentage {
+				right: 5px;
+			}
 		}
 	}
 

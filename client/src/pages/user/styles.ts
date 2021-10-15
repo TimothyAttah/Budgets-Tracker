@@ -10,6 +10,7 @@ export const Container = styled.div`
 		text-align: center;
 		padding-top: 30px;
 		color: var(--clr-accent);
+		font-size: 2rem;
 	}
 	form {
 		margin: auto;
@@ -20,6 +21,7 @@ export const Container = styled.div`
 			font-weight: var(--fw-bold);
 			display: inline-block;
 			margin-bottom: 5px;
+			font-size: 1.2rem;
 		}
 		input {
 			display: block;
@@ -37,11 +39,13 @@ export const Container = styled.div`
 			color: var(--clr-light);
 			border-radius: 5px;
 			margin: 20px 0;
+			font-size: 1.3rem;
 			:hover {
 				opacity: 0.8;
 			}
 		}
 		small {
+			font-size: 1rem;
 			text-transform: capitalize;
 			font-weight: var(--fw-bold);
 			a {
@@ -49,8 +53,8 @@ export const Container = styled.div`
 				font-style: italic;
 			}
 		}
-		@media (max-width: 320px) {
+		/* @media (max-width: 320px) {
 			font-size: 0.9rem;
-		}
+		} */
 	}
 `;
