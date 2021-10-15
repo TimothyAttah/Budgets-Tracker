@@ -15,12 +15,19 @@ const Container = styled.div`
 `;
 
 const BudgetsContainerTop = styled.div`
-	height: 40vh;
+	height: 50vh;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
 		url(${BackgroundImage});
 	background-size: cover;
 	background-position: center;
 	position: relative;
+
+	@media (max-width: 1280px) {
+		height: 40vh;
+	}
+	@media (max-width: 1024px) {
+		height: 30vh;
+	}
 `;
 
 export const Budgets = () => {

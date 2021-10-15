@@ -15,7 +15,7 @@ export const Container = styled.div`
 		font-size: 1.5rem;
 		color: #fff;
 		opacity: 0.9;
-		margin-top: 10px;
+		margin-top: 30px;
 	}
 
 	h2 {
@@ -86,11 +86,11 @@ export const Container = styled.div`
 		}
 		h2{
 			font-size: 2.3rem;
-			margin: 15px 0;
+			/* margin: 15px 0; */
 			letter-spacing: 2px;
 		}
 		h4{
-			margin-bottom: 10px;
+			/* margin-bottom: 10px; */
 			span{
 				right: 50px;
 			}
