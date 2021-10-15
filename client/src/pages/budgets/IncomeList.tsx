@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@material-ui/icons';
+import { Button, ButtonGroup } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { deleteIncome, listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
-import { Button, ButtonGroup } from '@material-ui/core';
 import history from '../../history';
 
 export const Container = styled.div`
@@ -16,12 +17,6 @@ export const Container = styled.div`
 		font-size: 1.5rem;
 		font-weight:200;
 	}
-	/* @media (max-width: 450px) {
-		width: 48%;
-		h2 {
-			font-size: 1.5rem;
-		}
-	} */
 `;
 
 export const IncomesListItem = styled.ul`
@@ -54,7 +49,6 @@ export const IncomesListItem = styled.ul`
 			height: 130px;
 		}
 		@media (max-width: 600px) {
-			flex-direction: column;
 			height: 140px;
 		}
 		@media (max-width: 360px) {
@@ -71,20 +65,21 @@ export const IncomeListItemLeft = styled.div`
 	justify-content: space-between;
 
 	span {
-		/* position: absolute; */
 		color: #008074;
-		/* right: 150px; */
 	}
+
 	@media (max-width: 1290px) {
 		p {
 			width: 220px;
 		}
 	}
+
 	@media (max-width: 1135px) {
 		p {
 			width: 150px;
 		}
 	}
+
 	@media (max-width: 900px) {
 		width: 100%;
 		flex-direction: column;
@@ -92,6 +87,7 @@ export const IncomeListItemLeft = styled.div`
 		p {
 			width: 100%;
 		}
+
 		.span__container {
 			display: flex;
 			justify-content: center;
@@ -99,6 +95,7 @@ export const IncomeListItemLeft = styled.div`
 			padding-top: 10px;
 		}
 	}
+
 `;
 export const IncomeListItemRight = styled.div`
 	display: flex;
@@ -135,6 +132,7 @@ export const IncomeListItemRight = styled.div`
 export const IncomeList = () => {
 	const dispatch = useDispatch();
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
+	
 	useEffect(() => {
 		dispatch(listIncomes());
 	}, [dispatch]);
@@ -147,7 +145,7 @@ export const IncomeList = () => {
 		<Container>
 			<h2>Incomes</h2>
 			<IncomesListItem>
-				{incomes.length ? (
+				{incomes.length && incomes[0].value > 0 ? (
 					incomes.map(income => {
 						return (
 							<li key={income.incomes_id}>
@@ -155,11 +153,11 @@ export const IncomeList = () => {
 									<p>{income.content}</p>
 									<div className='span__container'>
 										<span>
-											+
-											{income.value
+											+ {' '}
+											 {income.value > 0 ? income.value
 												.toFixed(2)
 												.toString()
-												.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+												.replace(/\B(?=(\d{3})+(?!\d))/g, ','): null}
 										</span>
 									</div>
 								</IncomeListItemLeft>
@@ -183,7 +181,7 @@ export const IncomeList = () => {
 						);
 					})
 				) : (
-					<h3>You have no income yet...</h3>
+					<h3>You have no incomes yet...</h3>
 				)}
 			</IncomesListItem>
 		</Container>

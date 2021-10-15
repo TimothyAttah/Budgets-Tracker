@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
+import { Button, ButtonGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
 import { StoreState } from '../../redux/reducers';
-import { Button, ButtonGroup } from '@material-ui/core';
 import { listIncomes } from '../../redux/actions/income';
 
 export const Container = styled.div`
@@ -16,12 +17,6 @@ export const Container = styled.div`
 		font-size: 1.5rem;
 		font-weight: 200;
 	}
-	/* @media (max-width: 450px) {
-		width: 48%;
-		h2 {
-			font-size: 1.5rem;
-		}
-	} */
 `;
 
 export const ExpensesListItem = styled.ul`
@@ -48,14 +43,16 @@ export const ExpensesListItem = styled.ul`
 		:hover {
 			opacity: 0.8;
 		}
+
 		@media (max-width: 900px) {
 			flex-direction: column;
 			height: 130px;
 		}
+
 		@media (max-width: 600px) {
-			flex-direction: column;
 			height: 140px;
 		}
+
 		@media (max-width: 360px) {
 			height: 120px;
 			font-size: 1rem;
@@ -79,16 +76,19 @@ export const ExpensesListItemLeft = styled.div`
 		padding: 4px 10px;
 		margin-left: 10px;
 	}
+
 	@media (max-width: 1290px) {
 		p {
 			width: 220px;
 		}
 	}
+
 	@media (max-width: 1135px) {
 		p {
 			width: 150px;
 		}
 	}
+
 	@media (max-width: 900px) {
 		width: 100%;
 		flex-direction: column;
@@ -96,6 +96,7 @@ export const ExpensesListItemLeft = styled.div`
 		p {
 			width: 100%;
 		}
+
 		.span__container {
 			display: flex;
 			justify-content: center;
@@ -103,6 +104,7 @@ export const ExpensesListItemLeft = styled.div`
 			padding-top: 10px;
 		}
 	}
+
 `;
 export const ExpensesListItemRight = styled.div`
 	display: flex;
@@ -111,6 +113,7 @@ export const ExpensesListItemRight = styled.div`
 	position: absolute;
 	right: 10px;
 	top: 10px;
+
 	.MuiButtonGroup-contained{
 		box-shadow: none;
 	}
@@ -125,22 +128,27 @@ export const ExpensesListItemRight = styled.div`
 			font-size: 20px;
 		}
 	}
+
 	@media (max-width: 900px) {
 		top: 90px;
 	}
+
 	@media (max-width: 600px) {
 		top: 100px;
 	}
+
 	@media (max-width: 360px) {
 		top: 80px;
 	}
+
 `;
 export const ExpensesList = () => {
 	const dispatch = useDispatch();
-	 useEffect(() => {
-		 dispatch(listExpenses());
-		 dispatch(listIncomes());
-	 }, [dispatch]);
+
+	useEffect(() => {
+		dispatch(listExpenses());
+		dispatch(listIncomes());
+	}, [dispatch]);
 	
 	const { expenses } = useSelector((state: StoreState) => state.expenses);
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
@@ -151,24 +159,12 @@ export const ExpensesList = () => {
 		.toFixed(2);
 	
 	const totalIncomes = parseInt(totalIncomesValues);
-//  const toExpensesTransactions = expensesTransactions.map(exp =>
-// 		Math.round((exp / totalIncomes) * 100)
-//  );
-//  console.log('total expenses<<<<<>>>>>>>>>', toExpensesTransactions);
-	
-	
-	// if (expenses > 0) {
-	// 	percentage + '%'
-	// } else {
-	// 	'---'
-	// }
-
-
 
 	const handleDelete = (id: number | string) => {
 		dispatch(deleteExpenses(id))
 	}
-  return (
+
+	return (
 		<Container>
 			<h2>Expenses</h2>
 			<ExpensesListItem>
@@ -186,7 +182,7 @@ export const ExpensesList = () => {
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
 									</span>
 									<span className='expenses__percentage'>
-										{Math.round((expense.value / totalIncomes) * 100)}%
+										{totalIncomes > 0 ? `${Math.round((expense.value / totalIncomes) * 100)}%` : '---'}
 									</span>
 								</div>
 							</ExpensesListItemLeft>
@@ -211,4 +207,4 @@ export const ExpensesList = () => {
 			</ExpensesListItem>
 		</Container>
 	);
-}
+};
