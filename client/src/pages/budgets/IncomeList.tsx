@@ -13,7 +13,7 @@ export const Container = styled.div`
 	width: 45%;
 	margin-top: 30px;
 	h2 {
-		color: #008074;
+		color: var(--clr-green);
 		font-size: 1.5rem;
 		font-weight:200;
 	}
@@ -28,21 +28,21 @@ export const IncomesListItem = styled.ul`
 		align-items: flex-end;
 		position: relative;
 		box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-		color: #3c3030b5;
+		color: var(--clr-dark);
 		text-transform: capitalize;
 		margin-bottom: 15px;
 		font-size: 1.2rem;
-		padding: 15px 10px;
+		padding: 20px 10px;
 		border-radius: 5px;
 		font-weight: 600;
 		:nth-of-type(even) {
-			background-color: #80808038;
+			background-color: var(--clr-thick-gray);
 		}
 		:hover {
 			opacity: 0.8;
 		}
 		span {
-			color: #008074;
+			color: var(--clr-green);
 		}
 		@media (max-width: 900px) {
 			flex-direction: column;
@@ -65,7 +65,7 @@ export const IncomeListItemLeft = styled.div`
 	justify-content: space-between;
 
 	span {
-		color: #008074;
+		color: var(--clr-green);
 	}
 
 	@media (max-width: 1290px) {
@@ -112,8 +112,10 @@ export const IncomeListItemRight = styled.div`
 		min-width: 0;
 	}
 	button {
-		background-color: #e5e5e5;
-		color: #008074;
+		:nth-of-type(odd) {
+			background-color: var(--clr-light);
+		}
+		color: var(--clr-green);
 		.MuiSvgIcon-root {
 			font-size: 20px;
 		}

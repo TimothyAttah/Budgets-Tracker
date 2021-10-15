@@ -13,13 +13,13 @@ export const Container = styled.div`
 
 	p {
 		font-size: 1.5rem;
-		color: #fff;
+		color: var(--clr-light);
 		opacity: 0.9;
 		margin-top: 30px;
 	}
 
 	h2 {
-		color: #fff;
+		color: var(--clr-light);
 		opacity: 0.8;
 		margin-top: 30px;
 		margin-bottom: 30px;
@@ -32,7 +32,7 @@ export const Container = styled.div`
 	}
 
 	h4 {
-		color: #322a2ab8;
+		color: var(--clr-light-dark);
 		padding: 15px 20px;
 		max-width: 500px;
 		width: 100%;
@@ -43,23 +43,23 @@ export const Container = styled.div`
 		position: relative;
 
 		span {
-			color: #fff;
+			color: var(--clr-light);
 			position: absolute;
 			right: 80px;
 			letter-spacing: 1px;
 		}
 		.percentage {
 			right: 20px;
-			background-color: #e2d7d759;
+			background-color: var(--clr-light-white);
 			font-size: 0.8rem;
 			padding: 5px 10px;
 		}
 	}
 	.income {
-		background: #008074;
+		background: var(--clr-green);
 	}
 	.expense {
-		background-color: #ff5049;
+		background-color: var(--clr-red);
 	}
 
 	@media (max-width: 1210px) {

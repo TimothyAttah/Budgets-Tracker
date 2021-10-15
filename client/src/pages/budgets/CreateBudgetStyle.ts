@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-	background: #80808038;
+	background: var(--clr-thick-gray);
 	padding: 0 15px;
 `;
 
@@ -16,12 +16,12 @@ export const FormContainerPrimary = styled.div`
 
 	.btn_red {
 		background-color: transparent;
-		color: red;
+		color: var(--clr-red);
 		border-radius: 50%;
-		border: 1px solid #ff5049;
+		border: 1px solid var(--clr-red);
 		padding: 5px 10px;
 		:hover {
-			background-color: #ff5049;
+			background-color: var(--clr-red);
 			color: var(--clr-light);
 			opacity: 0.9;
 		}
@@ -29,12 +29,12 @@ export const FormContainerPrimary = styled.div`
 
 	.btn_green {
 		background-color: transparent;
-		color: #008074;
+		color: var(--clr-green);
 		border-radius: 50%;
-		border: 1px solid #008074;
+		border: 1px solid var(--clr-green);
 		padding: 5px 10px;
 		:hover {
-			background-color: #008074;
+			background-color: var(--clr-green);
 			color: var(--clr-light);
 			opacity: 0.9;
 		}
@@ -69,19 +69,19 @@ export const FormContainerRight = styled.form`
 	}
 	.income_text {
 		width: 60%;
-		border: 1px solid #008074;
+		border: 1px solid var(--clr-green);
 	}
 	.income_value {
 		width: 25%;
-		border: 1px solid #008074;
+		border: 1px solid var(--clr-green);
 	}
 	.expenses_text {
 		width: 60%;
-		border: 1px solid #ff5049;
+		border: 1px solid var(--clr-red);
 	}
 	.expenses_value {
 		width: 25%;
-		border: 1px solid #ff5049;
+		border: 1px solid var(--clr-red);
 	}
 
 	@media (min-width: 768px){
