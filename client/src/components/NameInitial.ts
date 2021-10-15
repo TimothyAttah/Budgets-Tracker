@@ -4,10 +4,6 @@ export const auth: UserStore = localStorage.getItem('user');
 export const user = auth && JSON.parse(auth);
 console.log('user', user);
 
-// export const fullName = `${user && user.results && user.results.firstName} ${
-// 	user && user.results && user.results.lastName
-// 	}`;
-
 export const fullName = `${user?.first_name} ${user?.last_name}`; 
 
 export const nameToInitials = (name: any) => {
