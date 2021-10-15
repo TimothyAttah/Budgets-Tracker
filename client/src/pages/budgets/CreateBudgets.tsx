@@ -1,17 +1,17 @@
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import {  AddCircle, ArrowDropDown, Check,  RemoveCircle } from '@material-ui/icons';
+
 import { createIncome } from '../../redux/actions/income';
 import { createExpenses } from '../../redux/actions/expenses';
-
 import {
 	FormContainer,
 	FormContainerLeft,
 	FormContainerRight,
 	FormContainerPrimary
 } from './CreateBudgetStyle';
-import { v4 } from 'uuid';
-import {  AddCircle, ArrowDropDown, Check,  RemoveCircle } from '@material-ui/icons';
+
 
 export const CreateBudgets = () => {
 	const dispatch = useDispatch();
@@ -36,7 +36,6 @@ export const CreateBudgets = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const newBudget = {
-			id: v4(),
 			content,
 			value: parseInt(value),
 		};
@@ -56,32 +55,23 @@ export const CreateBudgets = () => {
 		}
 	};
 
-
 	return (
 		<FormContainer>
 			<FormContainerPrimary>
 			<FormContainerLeft>
 				<h4 onClick={toggleOpen}>
-					{' '}
-					<ArrowDropDown />{' '}
+					<ArrowDropDown />
 				</h4>
 				{close ? (
 					<>
-						<AddCircle
-							// className='btn_green btn_green-2'
-							onClick={handleClose}
-						/>
-						<RemoveCircle
-							// className='btn_red btn_red-2'
-							onClick={handleOpen}
-						/>
+						<AddCircle onClick={handleClose}/>
+						<RemoveCircle	onClick={handleOpen}/>
 					</>
 				) : null}
 			</FormContainerLeft>
 			<FormContainerRight onSubmit={handleSubmit}>
 				{open ? (
 					<>
-						<label htmlFor='income' className={open ? 'red' : 'green'}></label>
 						<input
 							type='text'
 							placeholder='Add description'
@@ -89,7 +79,6 @@ export const CreateBudgets = () => {
 							value={content}
 							onChange={e => setContent(e.target.value)}
 						/>
-						<label htmlFor='income' className={open ? 'red' : 'green'}></label>
 						<input
 							type='number'
 							placeholder='Value'
@@ -100,7 +89,6 @@ export const CreateBudgets = () => {
 					</>
 				) : (
 					<>
-						<label htmlFor='income' className={open ? 'red' : 'green'}></label>
 						<input
 							type='text'
 							placeholder='Add description'
@@ -108,7 +96,6 @@ export const CreateBudgets = () => {
 							value={content}
 							onChange={e => setContent(e.target.value)}
 						/>
-						<label htmlFor='income' className={open ? 'red' : 'green'}></label>
 						<input
 							type='number'
 							placeholder='Value'
@@ -119,7 +106,6 @@ export const CreateBudgets = () => {
 					</>
 				)}
 				<Button type='submit' className={open ? 'btn_red' : 'btn_green'}>
-					{/* {open ? } */}
 					<Check />
 				</Button>
 			</FormContainerRight>
