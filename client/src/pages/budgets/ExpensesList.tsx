@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, createRef } from 'react';
 import styled from 'styled-components';
 import { Button, ButtonGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,8 @@ import { listIncomes } from '../../redux/actions/income';
 export const Container = styled.div`
 	width: 45%;
 	margin-top: 30px;
+	margin-right: 20px;
+
 	h2 {
 		color: var(--clr-red);
 		font-size: 1.5rem;
@@ -21,7 +23,6 @@ export const Container = styled.div`
 
 export const ExpensesListItem = styled.ul`
 	margin-top: 20px;
-
 	li {
 		width: 100%;
 		display: flex;
@@ -43,6 +44,7 @@ export const ExpensesListItem = styled.ul`
 		:hover {
 			opacity: 0.8;
 		}
+		
 
 		@media (max-width: 900px) {
 			flex-direction: column;
@@ -145,6 +147,7 @@ export const ExpensesListItemRight = styled.div`
 `;
 export const ExpensesList = () => {
 	const dispatch = useDispatch();
+	let myRef = createRef<any>();
 
 	useEffect(() => {
 		dispatch(listExpenses());
@@ -162,22 +165,25 @@ export const ExpensesList = () => {
 	const totalIncomes = parseInt(totalIncomesValues);
 
 	const handleDelete = (id: number | string) => {
-		dispatch(deleteExpenses(id))
+		myRef.current.className = 'active';
+		setTimeout(() => {
+			dispatch(deleteExpenses(id))
+		},200)
 	}
 
 	return (
 		<Container>
 			<h2>Expenses</h2>
 			<ExpensesListItem>
-				{expenses.length ? (
+				{expenses.length && expenses[0].value ? (
 					expenses.map(expense => (
-						<li key={expense.expenses_id}>
+						<li ref={myRef} key={expense.expenses_id}>
 							<ExpensesListItemLeft>
 								<p>{expense.content}:</p>
 								<div className="span__container">
 									<span>
 										-{' '}
-										{expense.value
+										{expense.value && expense.value
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
@@ -195,7 +201,9 @@ export const ExpensesList = () => {
 											<Edit />
 										</Button>
 									</Link>
-									<Button onClick={() => handleDelete(expense.expenses_id)}>
+									<Button
+										className="active"
+										onClick={() => handleDelete(expense.expenses_id)}>
 										<Delete />
 									</Button>
 								</ButtonGroup>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, createRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@material-ui/icons';
@@ -12,17 +12,18 @@ import history from '../../history';
 export const Container = styled.div`
 	width: 45%;
 	margin-top: 30px;
+	margin-left: 20px;
+
 	h2 {
 		color: var(--clr-green);
 		font-size: 1.5rem;
-		font-weight:200;
+		font-weight: 200;
 	}
 `;
 
 export const IncomesListItem = styled.ul`
 	width: 100%;
 	margin-top: 20px;
-
 	li {
 		display: flex;
 		align-items: flex-end;
@@ -134,23 +135,26 @@ export const IncomeListItemRight = styled.div`
 export const IncomeList = () => {
 	const dispatch = useDispatch();
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
-	
+	let myRef = createRef<any>();
 	useEffect(() => {
 		dispatch(listIncomes());
 	}, [dispatch]);
 
 	const handleDelete = (id: number | string) => {
-		dispatch(deleteIncome(id));
+		myRef.current.className = 'active';
+		setTimeout(() => {
+			dispatch(deleteIncome(id));
+		},200)
 	};
 
 	return (
 		<Container>
 			<h2>Incomes</h2>
 			<IncomesListItem>
-				{incomes.length && incomes[0].value > 0 ? (
+				{incomes.length && incomes[0].value ? (
 					incomes.map(income => {
 						return (
-							<li key={income.incomes_id}>
+							<li ref={myRef} key={income.incomes_id}>
 								<IncomeListItemLeft>
 									<p>{income.content}</p>
 									<div className='span__container'>
@@ -174,7 +178,9 @@ export const IncomeList = () => {
 												<Edit />
 											</Button>
 										</Link>
-										<Button onClick={() => handleDelete(income.incomes_id)}>
+										<Button
+											className="active"
+											onClick={() => handleDelete(income.incomes_id)}>
 											<Delete />
 										</Button>
 									</ButtonGroup>

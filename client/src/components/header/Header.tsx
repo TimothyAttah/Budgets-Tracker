@@ -60,7 +60,7 @@ export const HeaderLeftPrimary = styled.div`
 	align-items: center;
 
 	a {
-		font-size: 1.6rem;
+		font-size: 1.4rem;
 		font-weight: bold;
 		font-style: italic;
 	}
@@ -84,7 +84,7 @@ export const HeaderRight = styled.div`
 
 	h4 {
 		margin-right: 30px;
-		font-size: 2rem;
+		font-size: 1.4rem;
 	}
 
 	button {
@@ -99,13 +99,13 @@ export const HeaderRight = styled.div`
 		h4 {
 			margin-right: 0px;
 			padding-bottom: 10px;
-			font-size: 1.6rem;
+			font-size: 1.3rem;
 		}
 	}
 	
 	@media (max-width: 320px) {
 		h4 {
-			font-size: 1.4rem;
+			font-size: 1.2rem;
 		}
 	}
 

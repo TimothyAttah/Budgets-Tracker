@@ -59,6 +59,10 @@ body {
   max-width: 2000px;
   width: 100%;
   margin: 0 auto;
+	overflow: overlay;
+}
+::-webkit-scrollbar{
+	display: none;
 }
 
 ul,
@@ -67,6 +71,13 @@ li {
 	margin: 0;
 	padding: 0;
   list-style: none;
+	animation: opacity 0.2s linear;
+		@keyframes opacity{
+			from{
+				opacity: 0;
+				transform: scale(0.7);
+			}
+		}
 }
 
 button {
@@ -82,5 +93,15 @@ a {
 input {
 	outline: none;
 }
+
+	.active{
+		animation: del 0.3s linear;
+	}
+	@keyframes del{
+		to{
+			opacity: 0;
+			transform: rotate(15deg) skew(25deg) scale(0.5);
+		}
+	}
 
 `;

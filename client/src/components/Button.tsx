@@ -15,19 +15,19 @@ export const ButtonContainers = styled(ButtonGroup)`
 	background-color: var(--clr-accent); 
 	button {
 		color: var(--clr-light);
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 	}
 
   @media (max-width: 500px){
     button{
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
     }
   }
 
   @media (max-width: 350px){
     button{
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: bold;
       padding:5px 10px;
     }
