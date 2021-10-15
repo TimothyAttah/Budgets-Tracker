@@ -27,6 +27,7 @@ interface IncomeLists {
 export type Incomes = {
 	incomes: IncomeLists[];
 };
+
 interface ExpensesLists {
 	expenses_id: number | string;
 	user_id: string;

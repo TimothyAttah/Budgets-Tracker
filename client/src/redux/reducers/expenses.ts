@@ -3,26 +3,7 @@ import { ExpensesActionTypes } from '../actionTypes/expensesAction';
 import { Expenses } from '../reduxInterface';
 
 const initialState: Expenses = {
-	expenses: [
-		// {
-		// 	expenses_id: 2,
-		// 	content: 'Groceries',
-		// 	value: 8000,
-		// 	createdAt: '18th May 2021',
-		// },
-		// {
-		// 	expenses_id: 3,
-		// 	content: 'Bought house',
-		// 	value: 5000,
-		// 	createdAt: '18th May 2021',
-		// },
-		// {
-		// 	expenses_id: 4,
-		// 	content: 'Bought milk',
-		// 	value: 2000,
-		// 	createdAt: '18th May 2021',
-		// },
-	],
+	expenses: [],
 };
 
 

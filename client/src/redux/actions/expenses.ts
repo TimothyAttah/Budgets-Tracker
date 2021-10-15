@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { Dispatch } from 'redux';
+
 import { ExpensesActionTypes } from '../actionTypes/expensesAction';
 import { ExpensesTypes } from '../types';
 import * as api from '../api';
@@ -24,8 +25,6 @@ export const createExpenses =
 export const listExpenses = () => async (dispatch: Dispatch) => {
 	try {
 		const { data } = await api.listsExpenses();
-			console.log('expenses actions', data);
-
 		dispatch<ExpensesActionTypes>({
 			type: ExpensesTypes.LIST_EXPENSES,
 			payload: data.expenses,
@@ -41,8 +40,6 @@ export const listExpenses = () => async (dispatch: Dispatch) => {
 export const listsExpense = (id: object) => async (dispatch: Dispatch) => {
 	try {
 		const { data } = await api.listsExpense(id);
-		console.log(data);
-
 		dispatch<ExpensesActionTypes>({
 			type: ExpensesTypes.LIST_EXPENSE,
 			payload: data,

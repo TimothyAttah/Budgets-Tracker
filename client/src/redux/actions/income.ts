@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
+import { toast } from "react-toastify";
+import * as api from '../api'
 import { IncomeActionTypes } from "../actionTypes/incomeAction";
 import { IncomeTypes } from "../types";
-import * as api from '../api'
-import { toast } from "react-toastify";
 
 export const createIncome =
 	(incomes: object) => async (dispatch: Dispatch) => {
@@ -23,9 +23,7 @@ export const createIncome =
   
 export const listIncomes = () => async (dispatch: Dispatch) => {
 	try {
-		const { data } = await api.listsIncomes();
-		console.log('incomes actions', data);
-		
+		const { data } = await api.listsIncomes();		
 		dispatch<IncomeActionTypes>({
 			type: IncomeTypes.LIST_INCOMES,
 			payload: data.incomes,
@@ -37,6 +35,7 @@ export const listIncomes = () => async (dispatch: Dispatch) => {
 		console.log(err);
 	}
 };
+
 export const listIncome = (id: object) => async (dispatch: Dispatch) => {
 	try {
 		const { data } = await api.listsIncome(id);
