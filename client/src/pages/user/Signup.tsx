@@ -1,6 +1,8 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { signUpUser } from '../../redux/actions/auth';
 import { Container } from './styles';
 
@@ -12,6 +14,7 @@ export const Signup = () => {
 		last_name: '',
 		email: '',
 		password: '',
+		confirmPassword: '',
 	});
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,10 +23,15 @@ export const Signup = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		dispatch(signUpUser(userData));
+		if (userData.confirmPassword !== userData.password) {
+			// userData.confirmPassword.setCustomValidity( "Passwords don't match" );
+			toast.error("passwords don't match. Try again.");
+		} else {
+			dispatch(signUpUser(userData));
+		}
 	};
 
-  return (
+	return (
 		<Container>
 			<h2>Budgetary</h2>
 			<form onSubmit={handleSubmit}>
@@ -31,8 +39,6 @@ export const Signup = () => {
 				<input
 					type='text'
 					name='first_name'
-					// value={first_name}
-					// onChange={e => setfirst_name(e.target.value)}
 					value={userData.first_name}
 					onChange={handleChange}
 					placeholder='Enter first name'
@@ -61,8 +67,14 @@ export const Signup = () => {
 					value={userData.password}
 					onChange={handleChange}
 				/>
-				<label htmlFor='password'>Repeat Password:</label>
-				<input type='password' placeholder='Repeat your password' />
+				<label htmlFor='confirmPassword'>Confirm Password:</label>
+				<input
+					type='password'
+					placeholder='Confirm your password'
+					name='confirmPassword'
+					value={userData.confirmPassword}
+					onChange={handleChange}
+				/>
 				<button type='submit'>Sign up</button>
 				<small>
 					Already have an account? <Link to='/users/signin'>Sign in here</Link>
@@ -70,4 +82,4 @@ export const Signup = () => {
 			</form>
 		</Container>
 	);
-}
+};

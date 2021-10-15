@@ -53,8 +53,5 @@ export const Container = styled.div`
 				font-style: italic;
 			}
 		}
-		/* @media (max-width: 320px) {
-			font-size: 0.9rem;
-		} */
 	}
 `;
