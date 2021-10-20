@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
@@ -103,9 +104,11 @@ export const ExpensesList = () => {
 							</ExpensesListItemLeft>
 							<ExpensesListItemRight>
 								<ButtonGroup variant='contained'>
-									<Button>
-										<Edit />
-									</Button>
+									<Link to={`/edit/${expense.expenses_id}`}>
+										<Button>
+											<Edit />
+										</Button>
+									</Link>
 									<Button onClick={() => handleDelete(expense.expenses_id)}>
 										<Delete />
 									</Button>
