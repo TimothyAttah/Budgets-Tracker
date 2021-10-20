@@ -13,11 +13,11 @@ CREATE TABLE users(
 );
 
 CREATE TABLE incomes(
-  incomeId SERIAL,
+  incomesId SERIAL,
   userId UUID,
   content VARCHAR(255) NOT NULL,
   value INTEGER NOT NULL,
-  PRIMARY KEY(incomeId),
+  PRIMARY KEY(incomesId),
   FOREIGN KEY (userId) REFERENCES users(userId),
   CreatedAt TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
