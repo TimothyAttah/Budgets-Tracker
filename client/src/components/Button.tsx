@@ -16,7 +16,14 @@ export const ButtonContainers = styled(ButtonGroup)`
 	/* background-color: var(--clr-lightBlue); */
 	button {
 		color: var(--clr-light);
+
 	}
+  @media (max-width: 350px){
+    button{
+      font-size: 10px;
+      font-weight: bold;
+    }
+  }
 `;
 
 
