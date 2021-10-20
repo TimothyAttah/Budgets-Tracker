@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Router, Switch } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 import { Header } from './components/header/Header';
 import history from './history';
 import { Budgets } from './pages/budgets/Budgets';
@@ -14,6 +15,7 @@ import { EditBudget } from './pages/budgets/EditBudget';
 export const App = () => {
 	toast.configure();
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		// if (user) {
 		// 	dispatch(getUsers());
@@ -22,6 +24,7 @@ export const App = () => {
 		// }
 		dispatch(getUsers());
 	}, [dispatch]);
+
   return (
 		<Router history={history}>
 			<Header />

@@ -1,6 +1,7 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { signInUser } from '../../redux/actions/auth';
 import { Container } from './styles';
 
@@ -10,13 +11,16 @@ export const Signin = () => {
 			email: '',
 			password: '',
 		});
+	
 		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 			setUserData({ ...userData, [e.target.name]: e.target.value });
 		};
+	
 		const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
 			dispatch(signInUser(userData));
 		};
+	
 	return (
 		<Container>
 			<h2>Budgetary</h2>

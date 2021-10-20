@@ -3,32 +3,7 @@ import { IncomeActionTypes } from "../actionTypes/incomeAction";
 import { Incomes } from "../reduxInterface";
 
 const initialState: Incomes = {
-  incomes: [
-    // {
-    //   id: 1,
-    //   content: 'salary',
-    //   value: 8000,
-    //   createdAt: '12th june 2021'
-    // },
-    // {
-    //   id: 2,
-    //   content: 'Projects',
-    //   value: 5000,
-    //   createdAt: '12th june 2021'
-    // },
-    // {
-    //   id: 3,
-    //   content: 'Todos',
-    //   value: 2000,
-    //   createdAt: '12th june 2021'
-    // },
-    // {
-    //   id: 4,
-    //   content: 'Cleaning Jobs jbhhghhg fitdrtud',
-    //   value: 7000,
-    //   createdAt: '12th june 2021'
-    // },
-  ]
+  incomes: []
 }
 
 export const incomes = (state = initialState, action: IncomeActionTypes) => {
@@ -56,5 +31,5 @@ export const incomes = (state = initialState, action: IncomeActionTypes) => {
       }
     default:
       return state;
-  }
+  };
 };

@@ -1,10 +1,9 @@
-import React, { MouseEventHandler } from 'react';
-import { FC } from 'react';
+import {FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
 interface BackdropProps {
 	close?: MouseEventHandler<HTMLDivElement>;
-}
+};
 
 const BackdropWrapper = styled.div`
 	top: 0;

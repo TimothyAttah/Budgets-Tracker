@@ -1,10 +1,11 @@
+import { toast } from "react-toastify";
+import { Dispatch } from "redux";
+
 import * as api from '../api';
 import { UsersTypes } from "../types";
 import { AuthTypesActions } from "../actionTypes/authAction";
 import { ISigninUser, IUser } from "../reduxInterface";
-import { Dispatch } from "redux";
 import history from "../../history";
-import { toast } from "react-toastify";
 
 export const signUpUser = (userData: IUser) => async (dispatch: Dispatch) => {
 	try {
@@ -43,7 +44,7 @@ export const signInUser =
 			console.log(err);
 		}
   };
-  
+
   export const getUsers = () => async (dispatch: Dispatch) => {
 		try {
 			const { data } = await api.getUsers();

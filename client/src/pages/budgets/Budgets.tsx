@@ -1,17 +1,15 @@
-import React from 'react';
 import styled from 'styled-components';
-import { ExpensesList } from './ExpensesList'
-import { IncomeList } from './IncomeList'
+import { ExpensesList } from './ExpensesList';
+import { IncomeList } from './IncomeList';
 import BackgroundImage from '../../images/back.jpg';
 import { BudgetsTransaction } from './BudgetsTransaction';
 import { CreateBudgets } from './CreateBudgets';
 
-const BudgetsContainer = styled.div`
-`;
+const BudgetsContainer = styled.div``;
+
 const Container = styled.div`
-  display: flex;
+	display: flex;
 	justify-content: space-between;
-	/* margin: auto; */
 `;
 
 const BudgetsContainerTop = styled.div`
@@ -25,12 +23,6 @@ const BudgetsContainerTop = styled.div`
 	@media (max-width: 1280px) {
 		height: 40vh;
 	}
-	/* @media (max-width: 1024px) {
-		height: 30vh;
-	}
-	@media screen and (max-width: 1024px) {
-		height:50vh;
-	} */
 	@media (max-width: 540px) {
 		height: 40vh;
 	}
@@ -40,20 +32,18 @@ const BudgetsContainerTop = styled.div`
 `;
 
 export const Budgets = () => {
-	
-	// console.log('this year.....', year);
-  return (
+	return (
 		<BudgetsContainer>
 			<BudgetsContainerTop>
 				<BudgetsTransaction />
 			</BudgetsContainerTop>
-			<div>
+			<>
 				<CreateBudgets />
-			</div>
+			</>
 			<Container>
 				<IncomeList />
 				<ExpensesList />
 			</Container>
 		</BudgetsContainer>
 	);
-}
+};

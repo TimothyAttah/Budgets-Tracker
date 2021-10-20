@@ -1,32 +1,28 @@
-import React, { useEffect } from 'react';
+import { useEffect, createRef } from 'react';
 import styled from 'styled-components';
+import { Button, ButtonGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
 import { StoreState } from '../../redux/reducers';
-import { Button, ButtonGroup } from '@material-ui/core';
 import { listIncomes } from '../../redux/actions/income';
 
 export const Container = styled.div`
 	width: 45%;
 	margin-top: 30px;
+	margin-right: 20px;
+
 	h2 {
-		color: #ff5049;
+		color: var(--clr-red);
 		font-size: 1.5rem;
 		font-weight: 200;
 	}
-	/* @media (max-width: 450px) {
-		width: 48%;
-		h2 {
-			font-size: 1.5rem;
-		}
-	} */
 `;
 
 export const ExpensesListItem = styled.ul`
 	margin-top: 20px;
-
 	li {
 		width: 100%;
 		display: flex;
@@ -35,27 +31,30 @@ export const ExpensesListItem = styled.ul`
 		flex-wrap: wrap;
 		position: relative;
 		box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-		color: #3c3030b5;
+		color: var(--clr-dark);
 		text-transform: capitalize;
 		margin-bottom: 15px;
 		font-size: 1.2rem;
-		padding: 15px 10px;
+		padding: 20px 10px;
 		border-radius: 5px;
 		font-weight: 600;
 		:nth-of-type(even) {
-			background-color: #80808038;
+			background-color: var(--clr-thick-gray);
 		}
 		:hover {
 			opacity: 0.8;
 		}
+		
+
 		@media (max-width: 900px) {
 			flex-direction: column;
 			height: 130px;
 		}
+
 		@media (max-width: 600px) {
-			flex-direction: column;
 			height: 140px;
 		}
+
 		@media (max-width: 360px) {
 			height: 120px;
 			font-size: 1rem;
@@ -68,27 +67,29 @@ export const ExpensesListItemLeft = styled.div`
 	width: 75%;
 	display: flex;
 	justify-content: space-between;
-	p {
-	}
+
 	span {
-		color: #ff5049;
+		color: var(--clr-red);
 	}
 	.expenses__percentage {
 		font-size: 0.8rem;
-		background-color: #ff504930;
+		background-color: var(--clr-light-red);
 		padding: 4px 10px;
 		margin-left: 10px;
 	}
+
 	@media (max-width: 1290px) {
 		p {
 			width: 220px;
 		}
 	}
+
 	@media (max-width: 1135px) {
 		p {
 			width: 150px;
 		}
 	}
+
 	@media (max-width: 900px) {
 		width: 100%;
 		flex-direction: column;
@@ -96,6 +97,7 @@ export const ExpensesListItemLeft = styled.div`
 		p {
 			width: 100%;
 		}
+
 		.span__container {
 			display: flex;
 			justify-content: center;
@@ -103,6 +105,7 @@ export const ExpensesListItemLeft = styled.div`
 			padding-top: 10px;
 		}
 	}
+
 `;
 export const ExpensesListItemRight = styled.div`
 	display: flex;
@@ -111,7 +114,8 @@ export const ExpensesListItemRight = styled.div`
 	position: absolute;
 	right: 10px;
 	top: 10px;
-	.MuiButtonGroup-contained{
+
+	.MuiButtonGroup-contained {
 		box-shadow: none;
 	}
 	.MuiButton-root {
@@ -119,28 +123,36 @@ export const ExpensesListItemRight = styled.div`
 		min-width: 0;
 	}
 	button {
-		background-color: #e5e5e5;
-		color: #ff5049;
+		:nth-of-type(odd) {
+			background-color: var(--clr-light);
+		}
+
+		color: var(--clr-red);
 		.MuiSvgIcon-root {
 			font-size: 20px;
 		}
 	}
+
 	@media (max-width: 900px) {
 		top: 90px;
 	}
+
 	@media (max-width: 600px) {
 		top: 100px;
 	}
+
 	@media (max-width: 360px) {
 		top: 80px;
 	}
 `;
 export const ExpensesList = () => {
 	const dispatch = useDispatch();
-	 useEffect(() => {
-		 dispatch(listExpenses());
-		 dispatch(listIncomes());
-	 }, [dispatch]);
+	let myRef = createRef<any>();
+
+	useEffect(() => {
+		dispatch(listExpenses());
+		dispatch(listIncomes());
+	}, [dispatch]);
 	
 	const { expenses } = useSelector((state: StoreState) => state.expenses);
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
@@ -151,42 +163,33 @@ export const ExpensesList = () => {
 		.toFixed(2);
 	
 	const totalIncomes = parseInt(totalIncomesValues);
-//  const toExpensesTransactions = expensesTransactions.map(exp =>
-// 		Math.round((exp / totalIncomes) * 100)
-//  );
-//  console.log('total expenses<<<<<>>>>>>>>>', toExpensesTransactions);
-	
-	
-	// if (expenses > 0) {
-	// 	percentage + '%'
-	// } else {
-	// 	'---'
-	// }
-
-
 
 	const handleDelete = (id: number | string) => {
-		dispatch(deleteExpenses(id))
+		myRef.current.className = 'active';
+		setTimeout(() => {
+			dispatch(deleteExpenses(id))
+		},200)
 	}
-  return (
+
+	return (
 		<Container>
 			<h2>Expenses</h2>
 			<ExpensesListItem>
-				{expenses.length ? (
+				{expenses.length && expenses[0].value ? (
 					expenses.map(expense => (
-						<li key={expense.expenses_id}>
+						<li ref={myRef} key={expense.expenses_id}>
 							<ExpensesListItemLeft>
 								<p>{expense.content}:</p>
 								<div className="span__container">
 									<span>
 										-{' '}
-										{expense.value
+										{expense.value && expense.value
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
 									</span>
 									<span className='expenses__percentage'>
-										{Math.round((expense.value / totalIncomes) * 100)}%
+										{totalIncomes > 0 ? `${Math.round((expense.value / totalIncomes) * 100)}%` : '---'}
 									</span>
 								</div>
 							</ExpensesListItemLeft>
@@ -198,7 +201,9 @@ export const ExpensesList = () => {
 											<Edit />
 										</Button>
 									</Link>
-									<Button onClick={() => handleDelete(expense.expenses_id)}>
+									<Button
+										className="active"
+										onClick={() => handleDelete(expense.expenses_id)}>
 										<Delete />
 									</Button>
 								</ButtonGroup>
@@ -211,4 +216,4 @@ export const ExpensesList = () => {
 			</ExpensesListItem>
 		</Container>
 	);
-}
+};

@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { listExpenses } from '../../redux/actions/expenses';
 import {  listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
-
 import { Container } from './BudgetTransactionStyles';
 
 export const BudgetsTransaction = () => {
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(listExpenses());
 		dispatch(listIncomes());
-	},[dispatch])
+	}, [dispatch])
+	
 	const { expenses } = useSelector((state: StoreState) => state.expenses);
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
 
@@ -22,24 +24,7 @@ export const BudgetsTransaction = () => {
 	const totalIncomes = parseInt(totalIncomesValues);
 	const totalExpenses = parseInt(totalExpensesValues);
 	const totalBalance = totalIncomes - totalExpenses;
-	const totalPercentage = Math.round((totalExpenses / totalIncomes) * 100)
-	
-	console.log('incomes<<<<<', incomeTransactions);
-	console.log('expenses<<<<<', expensesTransactions)
-
-	if (totalIncomes > 0) {
-		// calculate the percent
-	} else {
-		// data.percentage = -1
-	}
-	const toExpensesTransactions  = expensesTransactions.map(exp => Math.round((exp / totalIncomes) * 100)
-	)
-	console.log(
-		'total expenses<<<<<>>>>>>>>>', toExpensesTransactions
-	);
-	
-	
-	console.log(totalPercentage)
+	const totalPercentage = Math.round((totalExpenses / totalIncomes) * 100);
 
 	let now = new Date();
 	let months = [
@@ -58,16 +43,13 @@ export const BudgetsTransaction = () => {
 	];
 
 	let month = now.getMonth();
-
 	let year = now.getFullYear();
-
 
   return (
 		<Container>
 			<p>
-				Available budget in {months[month]} {year}:{' '}
+				Available budget in {months[month]} {year}:
 			</p>
-
 			<h2>
 				<span>
 					{totalBalance > 1
@@ -94,7 +76,7 @@ export const BudgetsTransaction = () => {
 				</span>
 			</h4>
 			<h4 className='expense'>
-				Expenses:{' '}
+				Expenses:
 				<span>
 					{totalExpenses > 1
 						? `- ${totalExpenses
@@ -105,7 +87,9 @@ export const BudgetsTransaction = () => {
 								.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
 					.00
 				</span>
-				<span className="percentage">{totalPercentage}%</span>
+				<span className='percentage'>
+					{totalIncomes > 0 ? `${totalPercentage}%` : '---'}
+				</span>
 			</h4>
 		</Container>
 	);
