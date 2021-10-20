@@ -75,6 +75,7 @@ body {
   max-width: 1500px;
   width: 100%;
   margin: 0 auto;
+	/* overflow-x: none; */
 }
 
 ul,
