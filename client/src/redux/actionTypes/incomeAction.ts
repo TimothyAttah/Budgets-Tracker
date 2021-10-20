@@ -5,9 +5,13 @@ interface CreateIncome {
   payload: object;
 }
 
+interface ListIncomes {
+  type: IncomeTypes.LIST_INCOMES;
+  payload: object;
+}
 interface ListIncome {
   type: IncomeTypes.LIST_INCOME;
-  payload?: object;
+  payload: object;
 }
 
 interface UpdateIncome {
@@ -23,4 +27,4 @@ interface DeleteIncome {
   payload: number | string
 }
 
-export type IncomeActionTypes = CreateIncome | ListIncome | UpdateIncome | DeleteIncome;
+export type IncomeActionTypes = CreateIncome | ListIncomes | ListIncome | UpdateIncome | DeleteIncome;

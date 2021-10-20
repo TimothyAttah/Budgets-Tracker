@@ -71,8 +71,8 @@ body {
 	font-family: var(--ff-third);
 	font-size: var(--fs-body);
 	line-height: 1.6;
-  border: 2px solid var(--clr-accent);
-  max-width: 1500px;
+  /* border: 2px solid var(--clr-accent); */
+  max-width: 2000px;
   width: 100%;
   margin: 0 auto;
 	/* overflow-x: none; */

@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 50px;
+	box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
 	h2 {
 		text-align: center;
+		padding-top: 30px;
 		color: var(--clr-accent);
 	}
 	form {
-		max-width: 500px;
-		width: 100%;
 		margin: auto;
-		margin-top: 40px;
+		margin-top: 20px;
 		padding: 20px 20px;
 		border-radius: 5px;
-		border: 1px solid var(--cream);
 		label {
 			font-weight: var(--fw-bold);
 			display: inline-block;

@@ -7,7 +7,7 @@ const incomeControllers = {
 			if (!content || !value)
 				return res.status(422).json({ error: 'Please enter all fields' });
 			const incomes = await Incomes.query(
-				'INSERT INTO incomes(userId, content, value ) VALUES($1,$2,$3) RETURNING *',
+				'INSERT INTO incomes(user_id, content, value ) VALUES($1,$2,$3) RETURNING *',
 				[req.user.id, content, value]
 			);
 			res
@@ -21,7 +21,8 @@ const incomeControllers = {
 	getIncomes: async (req: any, res: any) => {
 		try {
 			const incomes = await Incomes.query(
-				'SELECT * FROM users LEFT JOIN incomes ON users.userId = incomes.userId WHERE users.userId = $1 ',
+				'SELECT * FROM users LEFT JOIN incomes ON users.user_id = incomes.user_id WHERE users.user_id = $1',
+				// 'SELECT incomes.incomes_id, incomes.content, incomes.value  FROM users LEFT JOIN incomes ON users.user_id = incomes.user_id WHERE users.user_id = $1',
 				[req.user.id]
 			);
 			res.status(200).json({ incomes: incomes.rows });
@@ -33,7 +34,7 @@ const incomeControllers = {
 	getMyIncomes: async (req: any, res: any) => {
 		try {
 			const incomes = await Incomes.query(
-				'SELECT * FROM incomes WHERE userId = $1',
+				'SELECT * FROM incomes WHERE user_id = $1',
 				[req.user.id]
       );
       	res.status(200).json({
@@ -47,10 +48,10 @@ const incomeControllers = {
 	},
 	updateIncomes: async (req: any, res: any) => {
 		try {
-			const { content, value } = req.body;
 			const { id } = req.params;
+			const { content, value } = req.body;
 			const incomes = await Incomes.query(
-				'UPDATE incomes SET (content, value) = ($1,$2) WHERE incomesId = $3 AND userId = $4 RETURNING *',
+				'UPDATE incomes SET (content, value) = ($1,$2) WHERE incomes_id = $3 AND user_id = $4 RETURNING *',
 				[content, value, id, req.user.id]
 			);
 			if (incomes.rows.length === 0)
@@ -70,7 +71,7 @@ const incomeControllers = {
 		try {
 			const { id } = req.params;
 			const deleteIncome = await Incomes.query(
-				'DELETE FROM incomes WHERE incomesId = $1 AND userId = $2 RETURNING *',
+				'DELETE FROM incomes WHERE incomes_id = $1 AND user_id = $2 RETURNING *',
 				[id, req.user.id]
 			);
 			if (deleteIncome.rows.length === 0) {

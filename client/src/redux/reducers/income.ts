@@ -4,30 +4,30 @@ import { Incomes } from "../reduxInterface";
 
 const initialState: Incomes = {
   incomes: [
-    {
-      id: 1,
-      content: 'salary',
-      value: 8000,
-      createdAt: '12th june 2021'
-    },
-    {
-      id: 2,
-      content: 'Projects',
-      value: 5000,
-      createdAt: '12th june 2021'
-    },
-    {
-      id: 3,
-      content: 'Todos',
-      value: 2000,
-      createdAt: '12th june 2021'
-    },
-    {
-      id: 4,
-      content: 'Cleaning Jobs jbhhghhg fitdrtud',
-      value: 7000,
-      createdAt: '12th june 2021'
-    },
+    // {
+    //   id: 1,
+    //   content: 'salary',
+    //   value: 8000,
+    //   createdAt: '12th june 2021'
+    // },
+    // {
+    //   id: 2,
+    //   content: 'Projects',
+    //   value: 5000,
+    //   createdAt: '12th june 2021'
+    // },
+    // {
+    //   id: 3,
+    //   content: 'Todos',
+    //   value: 2000,
+    //   createdAt: '12th june 2021'
+    // },
+    // {
+    //   id: 4,
+    //   content: 'Cleaning Jobs jbhhghhg fitdrtud',
+    //   value: 7000,
+    //   createdAt: '12th june 2021'
+    // },
   ]
 }
 
@@ -38,19 +38,21 @@ export const incomes = (state = initialState, action: IncomeActionTypes) => {
         ...state,
         incomes: [action.payload, ...state.incomes]
       }
+    case IncomeTypes.LIST_INCOMES:
     case IncomeTypes.LIST_INCOME:
       return {
         ...state,
+        incomes: action.payload
       }
     case IncomeTypes.UPDATE_INCOME:
       return {
         ...state,
-        incomes: state.incomes.map(income => income.id === action.payload.id ? action.payload : income)
+        incomes: state.incomes.map(income => income.incomes_id === action.payload.id ? action.payload : income)
       }
     case IncomeTypes.DELETE_INCOME:
       return {
         ...state,
-        incomes: state.incomes.filter(income => income.id !== action.payload)
+        incomes: state.incomes.filter(income => income.incomes_id !== action.payload)
       }
     default:
       return state;

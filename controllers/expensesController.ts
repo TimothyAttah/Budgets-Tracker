@@ -7,7 +7,7 @@ const expensesControllers = {
 			if (!content || !value)
 				return res.status(422).json({ error: 'Please enter all fields' });
 			const expenses = await Expenses.query(
-				'INSERT INTO expenses(userId, content, value ) VALUES($1,$2,$3) RETURNING *',
+				'INSERT INTO expenses(user_id, content, value ) VALUES($1,$2,$3) RETURNING *',
 				[req.user.id, content, value]
 			);
 			res
@@ -21,7 +21,7 @@ const expensesControllers = {
 	getExpenses: async (req: any, res: any) => {
 		try {
 			const expenses = await Expenses.query(
-				'SELECT * FROM users LEFT JOIN expenses ON users.userId = expenses.userId WHERE users.userId = $1 ',
+				'SELECT * FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1 ',
 				[req.user.id]
 			);
 			res.status(200).json({ expenses: expenses.rows });
@@ -33,7 +33,7 @@ const expensesControllers = {
   getMyExpenses: async (req: any, res: any) => {
     try {
       const expenses = await Expenses.query(
-        'SELECT * FROM expenses WHERE userId = $1',
+        'SELECT * FROM expenses WHERE user_id = $1',
         [req.user.id]
       )
       	res.status(200).json({
@@ -50,7 +50,7 @@ const expensesControllers = {
 			const { content, value } = req.body;
 			const { id } = req.params;
 			const expenses = await Expenses.query(
-				'UPDATE expenses SET (content, value) = ($1,$2) WHERE expensesId = $3 AND userId = $4 RETURNING *',
+				'UPDATE expenses SET (content, value) = ($1,$2) WHERE expenses_id = $3 AND user_id = $4 RETURNING *',
 				[content, value, id, req.user.id]
 			);
 			if (expenses.rows.length === 0)
@@ -70,7 +70,7 @@ const expensesControllers = {
 		try {
 			const { id } = req.params;
 			const deleteExpenses = await Expenses.query(
-				'DELETE FROM expenses WHERE expensesId = $1 AND userId = $2 RETURNING *',
+				'DELETE FROM expenses WHERE expenses_id = $1 AND user_id = $2 RETURNING *',
 				[id, req.user.id]
 			);
 			if (deleteExpenses.rows.length === 0) {
@@ -81,7 +81,7 @@ const expensesControllers = {
 					});
 			}
 			res.status(200).json({
-				message: 'Income deleted successfully',
+				message: 'Expenses deleted successfully',
 				results: deleteExpenses.rows[0],
 			});
 		} catch (err) {

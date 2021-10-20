@@ -7,7 +7,12 @@ interface CreateExpenses {
 
 interface ListExpenses {
 	type: ExpensesTypes.LIST_EXPENSES;
-	payload?: object;
+	payload: object;
+}
+
+interface ListExpense {
+	type: ExpensesTypes.LIST_EXPENSE;
+	payload: object;
 }
 
 interface UpdateExpenses {
@@ -26,5 +31,6 @@ interface DeleteExpenses {
 export type ExpensesActionTypes =
 	| CreateExpenses
 	| ListExpenses
+	| ListExpense
 	| UpdateExpenses
 	| DeleteExpenses;

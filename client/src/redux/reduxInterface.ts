@@ -1,20 +1,40 @@
+export interface IUser {
+	user_id?: string;
+	first_name: string;
+	last_name: string;
+	email: string;
+	password: string;
+}
+
+export interface ISigninUser {
+	user_id?: string;
+	email: string;
+	password: string;
+}
+
+export type InitialUser = {
+	users: IUser[];
+};
+
 interface IncomeLists {
-	id: number | string;
+	incomes_id: number | string;
+	user_id: string;
 	content: string;
 	value: number;
-	createdAt?: Date | string;
+	created_At?: Date | string;
 }
 
 export type Incomes = {
-  incomes: IncomeLists[]
-}
+	incomes: IncomeLists[];
+};
 interface ExpensesLists {
-	id: number | string;
+	expenses_id: number | string;
+	user_id: string;
 	content: string;
 	value: number;
-	createdAt?: Date | string;
+	created_At?: Date | string;
 }
 
 export type Expenses = {
-  expenses: ExpensesLists[]
-}
+	expenses: ExpensesLists[];
+};

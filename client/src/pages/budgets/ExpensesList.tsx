@@ -25,7 +25,8 @@ export const ExpensesListItem = styled.ul`
 		justify-content: space-between;
 		background-color: var(--gray-4);
 		/* background: linear-gradient(to bottom, green, red); */
-		background: linear-gradient(to bottom, #b53f3f99, #2dc5114a);
+		background: linear-gradient(90deg, rgb(63 81 181 / 50%), white);
+		box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
 		color: var(--clr-dark);
 		text-transform: capitalize;
 		margin-bottom: 10px;
@@ -65,7 +66,7 @@ export const ExpensesListItemRight = styled.div`
 	display: flex;
 	justify-content: right;
 	button {
-		background: linear-gradient(to bottom, #b53f3f99, #2dc5114a);
+		background-color: #e5e5e5;
 		color: teal;
 		.MuiSvgIcon-root {
 			font-size: 25px;
@@ -96,7 +97,7 @@ export const ExpensesList = () => {
 			<ExpensesListItem>
 				{expenses.length ? (
 					expenses.map(expense => (
-						<li key={expense.id}>
+						<li key={expense.expenses_id}>
 							<ExpensesListItemLeft>
 								{expense.content}: <span>{expense.value}</span>
 							</ExpensesListItemLeft>
@@ -105,7 +106,7 @@ export const ExpensesList = () => {
 									<Button>
 										<Edit />
 									</Button>
-									<Button onClick={()=> handleDelete(expense.id)}>
+									<Button onClick={() => handleDelete(expense.expenses_id)}>
 										<Delete />
 									</Button>
 								</ButtonGroup>

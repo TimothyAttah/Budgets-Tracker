@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Delete, Edit } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { listIncome, deleteIncome } from '../../redux/actions/income';
+import { deleteIncome, listIncomes } from '../../redux/actions/income';
 import { StoreState } from '../../redux/reducers';
 import { Button, ButtonGroup } from '@material-ui/core';
 
@@ -25,7 +25,10 @@ export const IncomesListItem = styled.ul`
 		display: flex;
 		justify-content: space-between;
 		/* background: linear-gradient(to bottom, #3f51b5, #2dc5114a); */
-		background: linear-gradient(to bottom, #b53f3f99, #2dc5114a);
+		background: linear-gradient(90deg, rgb(63 81 181 / 50%), white);
+		/* background-color: transparent; */
+		/* box-shadow: 10px 10px 13px #0002, -10px -10px 13px #fff7; */
+		box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
 		color: var(--clr-dark);
 		text-transform: capitalize;
 		margin-bottom: 10px;
@@ -65,7 +68,8 @@ export const IncomeListItemRight = styled.div`
 	display: flex;
 	justify-content: right;
 	button {
-		background: linear-gradient(to bottom, #b53f3f99, #2dc5114a);
+		/* background: linear-gradient(to bottom, #b53f3f99, #2dc5114a); */
+		background-color: #e5e5e5;
 		color: teal;
 		.MuiSvgIcon-root {
 			font-size: 25px;
@@ -86,36 +90,37 @@ export const IncomeList = () => {
 	const dispatch = useDispatch();
 	const { incomes } = useSelector((state: StoreState) => state.incomes);
 	useEffect(() => {
-		dispatch(listIncome());
+		dispatch(listIncomes());
 	}, [dispatch]);
 
 	const handleDelete = (id: number | string) => {
 		dispatch(deleteIncome(id));
-	}
-
+	};
 
 	return (
 		<Container>
 			<h2>Incomes</h2>
 			<IncomesListItem>
 				{incomes.length ? (
-					incomes.map(income => (
-						<li key={income.id}>
-							<IncomeListItemLeft>
-								{income.content}: <span>{income.value}</span>
-							</IncomeListItemLeft>
-							<IncomeListItemRight>
-								<ButtonGroup variant='contained'>
-									<Button>
-										<Edit />
-									</Button>
-									<Button onClick={()=> handleDelete(income.id)}>
-										<Delete />
-									</Button>
-								</ButtonGroup>
-							</IncomeListItemRight>
-						</li>
-					))
+					incomes.map(income => {
+						return (
+							<li key={income.incomes_id}>
+								<IncomeListItemLeft>
+									{income.content}: <span>{income.value}</span>
+								</IncomeListItemLeft>
+								<IncomeListItemRight>
+									<ButtonGroup variant='contained'>
+										<Button>
+											<Edit />
+										</Button>
+										<Button onClick={() => handleDelete(income.incomes_id)}>
+											<Delete />
+										</Button>
+									</ButtonGroup>
+								</IncomeListItemRight>
+							</li>
+						);
+					})
 				) : (
 					<h3>You have no income yet...</h3>
 				)}
