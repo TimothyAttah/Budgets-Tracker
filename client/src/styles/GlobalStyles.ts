@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
 *,
 *::before,
 *::after {
@@ -17,6 +20,7 @@
 	--fw-bold: 700;
 
 	--clr-light: #fff;
+	--bg-black: #000000;
 	--clr-dark: #303030;
 	--clr-lightBlue: #1877f2;
 	--clr-accent: #f8333c;
@@ -35,7 +39,7 @@
 	--dark-purple: #3f51b5;
 	--cream: #e5e5e5;
 
-	--fs-h1: 3rem;
+	--fs-h1: 2.5rem;
 	--fs-h2: 2.25rem;
 	--fs-h3: 1.25rem;
 	--fs-body: 1rem;
@@ -93,7 +97,6 @@ a {
 
 input {
 	outline: none;
-	cursor: pointer;
 }
 
 /* Typography */
@@ -115,4 +118,4 @@ h3 {
 	font-size: var(--fs-h3);
 }
 
-
+`;
