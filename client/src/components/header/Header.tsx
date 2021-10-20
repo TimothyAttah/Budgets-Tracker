@@ -9,9 +9,9 @@ export const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	position: fixed;
-	max-width: 2000px;
-	width: 100%;
+	position: sticky;
+	/* max-width: 2000px;
+	width: 100%; */
 	margin: auto;
 	top: 0;
 	left: 0;
@@ -41,12 +41,12 @@ export const HeaderLeft = styled.div`
 	@media (max-width: 450px) {
 		margin-top: -30px;
 		a {
-			font-size: 1rem;
+			font-size: 1.3rem;
 		}
 	}
 	@media (max-width: 320px) {
 		a {
-			font-size: 0.8rem;
+			font-size: 1.3rem;
 		}
 	}
 `;
@@ -59,18 +59,18 @@ export const HeaderLeftPrimary = styled.div`
 	align-items: center;
 
 	a {
-		font-size: 1.5rem;
+		font-size: 1.6rem;
 		font-weight: bold;
 		font-style: italic;
 	}
 	@media (max-width: 450px) {
 		a {
-			font-size: 1rem;
+			font-size: 1.4rem;
 		}
 	}
 	@media (max-width: 320px) {
 		a {
-			font-size: 0.8rem;
+			font-size: 1rem;
 		}
 	}
 `;
@@ -82,23 +82,26 @@ export const HeaderRight = styled.div`
 
 	h4 {
 		margin-right: 30px;
+		font-size: 2rem;
 	}
 	button {
 		padding: 10px;
 		border-radius: 10px;
 		text-transform: capitalize;
 		font-weight: bold;
+		/* font-size: 1.5rem; */
 	}
 	@media (max-width: 450px) {
 		flex-direction: column;
 		h4 {
 			margin-right: 0px;
 			padding-bottom: 10px;
+			font-size: 1.6rem;
 		}
 	}
 	@media (max-width: 320px) {
 		h4 {
-			font-size: 0.8rem;
+			font-size: 1.4rem;
 		}
 	}
 `;

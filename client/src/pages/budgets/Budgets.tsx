@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ExpensesList } from './ExpensesList'
 import { IncomeList } from './IncomeList'
-import BackgroundImage from '../../images/bg.jpeg';
+import BackgroundImage from '../../images/back.jpg';
 import { BudgetsTransaction } from './BudgetsTransaction';
 import { CreateBudgets } from './CreateBudgets';
 
@@ -15,16 +15,33 @@ const Container = styled.div`
 `;
 
 const BudgetsContainerTop = styled.div`
-	/* width: 100%;
-	height: 400px; */
-	min-width: 20vw;
-	/* padding-top: 30%; */
-	background: url(${BackgroundImage}) no-repeat center;
+	height: 50vh;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+		url(${BackgroundImage});
 	background-size: cover;
+	background-position: center;
 	position: relative;
+
+	@media (max-width: 1280px) {
+		height: 40vh;
+	}
+	/* @media (max-width: 1024px) {
+		height: 30vh;
+	}
+	@media screen and (max-width: 1024px) {
+		height:50vh;
+	} */
+	@media (max-width: 540px) {
+		height: 40vh;
+	}
+	@media (max-width: 420px) {
+		height: 35vh;
+	}
 `;
 
 export const Budgets = () => {
+	
+	// console.log('this year.....', year);
   return (
 		<BudgetsContainer>
 			<BudgetsContainerTop>

@@ -6,89 +6,165 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listExpenses, deleteExpenses } from '../../redux/actions/expenses';
 import { StoreState } from '../../redux/reducers';
 import { Button, ButtonGroup } from '@material-ui/core';
+import { listIncomes } from '../../redux/actions/income';
 
 export const Container = styled.div`
 	width: 45%;
 	margin-top: 30px;
-	@media (max-width: 450px) {
+	h2 {
+		color: #ff5049;
+		font-size: 1.5rem;
+		font-weight: 200;
+	}
+	/* @media (max-width: 450px) {
 		width: 48%;
 		h2 {
 			font-size: 1.5rem;
 		}
-	}
+	} */
 `;
 
 export const ExpensesListItem = styled.ul`
 	margin-top: 20px;
 
 	li {
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		background-color: var(--gray-4);
-		/* background: linear-gradient(to bottom, green, red); */
-		background: linear-gradient(90deg, rgb(63 81 181 / 50%), white);
+		align-items: flex-end;
+		flex-wrap: wrap;
+		position: relative;
 		box-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-		color: var(--clr-dark);
+		color: #3c3030b5;
 		text-transform: capitalize;
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 		font-size: 1.2rem;
 		padding: 15px 10px;
 		border-radius: 5px;
+		font-weight: 600;
+		:nth-of-type(even) {
+			background-color: #80808038;
+		}
 		:hover {
 			opacity: 0.8;
 		}
-		@media (max-width: 850px) {
+		@media (max-width: 900px) {
 			flex-direction: column;
+			height: 130px;
+		}
+		@media (max-width: 600px) {
+			flex-direction: column;
+			height: 140px;
 		}
 		@media (max-width: 360px) {
-			font-size: 0.9rem;
+			height: 120px;
+			font-size: 1rem;
 			font-weight: bold;
 		}
 	}
 `;
 
 export const ExpensesListItemLeft = styled.div`
-	width: 50%;
+	width: 75%;
 	display: flex;
 	justify-content: space-between;
-	span {
-		font-style: italic;
-		font-weight: bolder;
-		display: flex;
-		padding: 0 5px;
-		align-items: flex-end;
+	p {
 	}
-	@media (max-width: 850px) {
+	span {
+		color: #ff5049;
+	}
+	.expenses__percentage {
+		font-size: 0.8rem;
+		background-color: #ff504930;
+		padding: 4px 10px;
+		margin-left: 10px;
+	}
+	@media (max-width: 1290px) {
+		p {
+			width: 220px;
+		}
+	}
+	@media (max-width: 1135px) {
+		p {
+			width: 150px;
+		}
+	}
+	@media (max-width: 900px) {
 		width: 100%;
-		align-items: flex-end;
+		flex-direction: column;
+		padding-bottom: 15px;
+		p {
+			width: 100%;
+		}
+		.span__container {
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			padding-top: 10px;
+		}
 	}
 `;
 export const ExpensesListItemRight = styled.div`
 	display: flex;
-	justify-content: right;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	.MuiButtonGroup-contained{
+		box-shadow: none;
+	}
+	.MuiButton-root {
+		padding: 5px;
+		min-width: 0;
+	}
 	button {
 		background-color: #e5e5e5;
-		color: teal;
+		color: #ff5049;
 		.MuiSvgIcon-root {
-			font-size: 25px;
+			font-size: 20px;
 		}
 	}
-	@media (max-width: 850px) {
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: right;
-		border-top: 2px solid var(--clr-dark);
-		margin-top: 20px;
-		padding-top: 10px;
+	@media (max-width: 900px) {
+		top: 90px;
+	}
+	@media (max-width: 600px) {
+		top: 100px;
+	}
+	@media (max-width: 360px) {
+		top: 80px;
 	}
 `;
 export const ExpensesList = () => {
-  const dispatch = useDispatch();
-  const { expenses } = useSelector((state: StoreState) => state.expenses);
-  useEffect(() => {
-    dispatch(listExpenses())
-	}, [dispatch]);
+	const dispatch = useDispatch();
+	 useEffect(() => {
+		 dispatch(listExpenses());
+		 dispatch(listIncomes());
+	 }, [dispatch]);
+	
+	const { expenses } = useSelector((state: StoreState) => state.expenses);
+	const { incomes } = useSelector((state: StoreState) => state.incomes);
+
+	const incomeTransactions = incomes.map(income => income.value);
+	const totalIncomesValues = incomeTransactions
+		.reduce((val, results) => (val += results), 0)
+		.toFixed(2);
+	
+	const totalIncomes = parseInt(totalIncomesValues);
+//  const toExpensesTransactions = expensesTransactions.map(exp =>
+// 		Math.round((exp / totalIncomes) * 100)
+//  );
+//  console.log('total expenses<<<<<>>>>>>>>>', toExpensesTransactions);
+	
+	
+	// if (expenses > 0) {
+	// 	percentage + '%'
+	// } else {
+	// 	'---'
+	// }
+
+
+
 	const handleDelete = (id: number | string) => {
 		dispatch(deleteExpenses(id))
 	}
@@ -100,8 +176,21 @@ export const ExpensesList = () => {
 					expenses.map(expense => (
 						<li key={expense.expenses_id}>
 							<ExpensesListItemLeft>
-								{expense.content}: <span>{expense.value}</span>
+								<p>{expense.content}:</p>
+								<div className="span__container">
+									<span>
+										-{' '}
+										{expense.value
+											.toFixed(2)
+											.toString()
+											.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+									</span>
+									<span className='expenses__percentage'>
+										{Math.round((expense.value / totalIncomes) * 100)}%
+									</span>
+								</div>
 							</ExpensesListItemLeft>
+
 							<ExpensesListItemRight>
 								<ButtonGroup variant='contained'>
 									<Link to={`/edit/${expense.expenses_id}`}>

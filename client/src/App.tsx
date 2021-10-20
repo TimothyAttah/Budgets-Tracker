@@ -25,7 +25,7 @@ export const App = () => {
   return (
 		<Router history={history}>
 			<Header />
-			<div style={{ paddingTop: '100px' }}>
+			<div style={{ paddingTop: '0px' }}>
         <Switch>
           <Route path='/' exact component={Budgets} />
           <Route path='/edit/:id' exact component={EditBudget} />
