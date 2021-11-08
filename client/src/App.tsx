@@ -17,11 +17,11 @@ export const App = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// if (user) {
-		// 	dispatch(getUsers());
-		// } else {
-		// 	history.push('/users/signin');
-		// }
+		if (user) {
+			dispatch(getUsers());
+		} else {
+			history.push('/users/signin');
+		}
 		dispatch(getUsers());
 	}, [dispatch]);
 
