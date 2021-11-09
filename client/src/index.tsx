@@ -4,20 +4,15 @@ import { Provider } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { App } from './App';
-import { store } from './redux/Store';
+import { store } from './redux/store';
+import { GlobalStyle } from './styles/GlobalStyles';
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+	<React.StrictMode>
+		<Provider store={store}>
+			<GlobalStyle />
+			<App />
+		</Provider>
+	</React.StrictMode>,
 	document.getElementById('root')
 );
-
-// ReactDOM.render(
-// 	<React.StrictMode>
-// 		<Provider store={store}>
-// 		<App />
-// 		</Provider>
-// 	</React.StrictMode>,
-// 	document.getElementById('root')
-// );

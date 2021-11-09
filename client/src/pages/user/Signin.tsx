@@ -1,43 +1,51 @@
-import React from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { images } from '../../components/images';
-import { SigninForm } from '../../components/forms/SignInForm';
-import { Modal } from '../../components/modal/Modal';
-import { Backdrop } from '../../components/Backdrop';
-import { UserContainer, GoogleBox, GoogleImg, Divider } from './Styles';
 
+import { signInUser } from '../../redux/actions/auth';
+import { Container } from './styles';
 
 export const Signin = () => {
+		const dispatch = useDispatch();
+		const [userData, setUserData] = useState({
+			email: '',
+			password: '',
+		});
+	
+		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+			setUserData({ ...userData, [e.target.name]: e.target.value });
+		};
+	
+		const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			dispatch(signInUser(userData));
+		};
+	
 	return (
-		<>
-			<Backdrop />
-			<Modal>
-				<UserContainer>
-					<h1>Note3Sixty</h1>
-					<h3>Create your account</h3>
-					<p>Enter your personal details to continue your journey today</p>
-					<GoogleBox>
-						<Link to='/api/auth/google'>
-							<GoogleImg>
-								<img src={images.GoogleIcon} alt='' />
-							</GoogleImg>
-							<span>Log in with Google</span>
-						</Link>
-					</GoogleBox>
-					<Divider>
-						<img src={images.LineIcon} alt='' />
-						<span>OR</span>
-						<img src={images.LineIcon} alt='' />
-					</Divider>
-					<SigninForm />
-					<small>
-						Don't have an account?
-						<span>
-							<Link to='/users/signup'>Sign up here</Link>
-						</span>
-					</small>
-				</UserContainer>
-			</Modal>
-		</>
+		<Container>
+			<h2>Budgetary</h2>
+			<form onSubmit={handleSubmit}>
+				<label htmlFor='email'>Email:</label>
+				<input
+					type='email'
+					name='email'
+					placeholder='Enter email'
+					value={userData.email}
+					onChange={handleChange}
+				/>
+				<label htmlFor='password'>Password:</label>
+				<input
+					type='password'
+					name='password'
+					placeholder='Enter your password'
+					value={userData.password}
+					onChange={handleChange}
+				/>
+				<button>Sign in</button>
+				<small>
+					Don't have an account? <Link to='/users/signup'>Sign up here</Link>
+				</small>
+			</form>
+		</Container>
 	);
 };

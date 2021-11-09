@@ -1,26 +1,25 @@
-import { Auth } from "../InterfaceRedux";
-import { UserTypes } from "../types";
-import { AuthTypesActions } from "../actionsTypes/authTypes";
+import { UsersTypes } from "../types";
+import { AuthTypesActions } from '../actionTypes/authAction';
+import { InitialUser } from "../reduxInterface";
 
-const initialState: Auth = {
-  auth: []
-}
+const initialUser: InitialUser = {
+	users: [],
+};
 
-export const auth = (state = initialState, action: AuthTypesActions) => {
-  switch (action.type) {
-    case UserTypes.SIGN_UP:
-    case UserTypes.SIGN_IN:
-      return {
-        ...state,
-        auth: [action.type, ...state.auth]
-      }
-    case UserTypes.GET_USERS:
-      case UserTypes.GET_USER:
-      return {
-        ...state,
-        auth: action.payload
-      }
-    default:
-      return state
-  }
-}
+export const authReducer = (state = initialUser, action: AuthTypesActions) => {
+	switch (action.type) {
+		case UsersTypes.SIGN_UP:
+		case UsersTypes.SIGN_IN:
+			return {
+				...state,
+				users: action.payload,
+			};
+		case UsersTypes.GET_USER:
+			return {
+				...state,
+				users: action.payload,
+			};
+		default:
+			return state;
+	}
+};

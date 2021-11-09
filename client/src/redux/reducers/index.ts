@@ -1,22 +1,15 @@
 import { combineReducers } from 'redux';
-import { Auth, Notes, Posts, User } from '../InterfaceRedux';
+import { Incomes, Expenses } from '../reduxInterface';
 
-import { notes } from './notes';
-import { auth } from './auth';
-import { posts } from './posts';
-import { user } from './user';
-
+import { incomes } from './income';
+import { expenses } from './expenses';
 
 export interface StoreState {
-  notes: Notes;
-  auth: Auth;
-  posts: Posts;
-  user: User;
+  incomes: Incomes;
+  expenses: Expenses;
 }
 
 export const reducers = combineReducers({
-  notes,
-  auth,
-  posts,
-  user
+  incomes,
+  expenses
 });
